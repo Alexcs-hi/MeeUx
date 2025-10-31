@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 😼 MeeUx — Rule34 Browser & Explorer
 
-## Getting Started
+MeeUx is a **Rule34 browser and explorer** built to let you easily browse, search, and explore posts from Rule34 with a clean, modern UI.  
+Some features are still in progress — this is a **work-in-progress project**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Current Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Browse Rule34 posts  
+- Infinite scrolling for smooth browsing  
+- Tag 🏷️ search with autocomplete  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📸 Screenshots
 
-## Learn More
+<div align="center" style="display: flex; gap: 10px; justify-content: center;">
+  <a href="public/screen/meeux_screen1.png" target="_blank">
+    <img src="public/screen/meeux_screen1.png" height="350">
+  </a>
+  <a href="public/screen/meeux_screen2.png" target="_blank">
+    <img src="public/screen/meeux_screen2.png" height="350">
+  </a>
+</div>
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎥 Demo
+<div align="center">
+  <a href="public/screen/meeux_demo.gif" target="_blank">
+    <img src="public/screen/meeux_demo.gif" height="500">
+  </a>
+</div>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## ⚙️ How To Use
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. First make sure to have [Node.js](https://nodejs.org/en/download) (npm) and [Git](https://git-scm.com/install/windows) installed.  
+2. Create an account on [rule34.xxx](https://rule34.xxx/).  
+   - Go to [Options](https://rule34.xxx/index.php?page=account&s=options).  
+   - Click **Generate New Key** → **Save** → copy your generated key.  
+3. Run:
+   ```bash
+   git clone https://github.com/Alexcs-hi/MeeUx.git
+   cd meeux
+   npm install
+   npm run dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ⚒️ Work-In-Progress Features
+
+- Sorting posts by **rating**, **upload date**, or **score**  
+- **Download support** for images/videos  
+- **Favorites** — save posts you like locally  
+- **Additional themes** for customization  
+- A Mobile app in the future 
+---
+
+
+
+####  Please do contribute 🤝 , if you're interested in this project ❤️
+#### You can contact me on Discord:
+ <pre>alexcs_ye</pre>
+
+ <pre>
+  ∧,,,∧
+(  ̳• · • ̳)
+/    づ♡ love you 
+</pre>
