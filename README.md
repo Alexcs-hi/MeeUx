@@ -1,4 +1,4 @@
-# 😼 MeeUx — Rule34 Browser & Explorer
+# 😼 MeeUx — Explore Rule34
 
 MeeUx is a **Rule34 browser and explorer** built to let you easily browse, search, and explore posts from Rule34 with a clean, modern UI.  
 Some features are still in progress — this is a **work-in-progress project**.
