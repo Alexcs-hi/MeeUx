@@ -9,12 +9,13 @@ Some features are still in progress — this is a **work-in-progress project**.
 
 - Browse Rule34 posts  
 - Infinite scrolling for smooth browsing  
-- Tag 🏷️ search with autocomplete  
+- Tag 🏷️ search with autocomplete
+- Sort posts based on **Rating** , **Upload date** or **Score**
 
 
 ## 📸 Screenshots
 
-<div align="center" style="display: flex; gap: 10px; justify-content: center;">
+<div align="center" style="display: flex; gap: 10px; justify-content: center;   ">
   <a href="public/screen/meeux_screen1.png" target="_blank">
     <img src="public/screen/meeux_screen1.png" height="350">
   </a>
@@ -47,15 +48,16 @@ Some features are still in progress — this is a **work-in-progress project**.
 
 ## ⚒️ Work-In-Progress Features
 
-- Sorting posts by **rating**, **upload date**, or **score**  
 - **Download support** for images/videos  
-- **Favorites** — save posts you like locally  
+- **Favorites** — save posts locally  
 - **Additional themes** for customization  
-- A Mobile app in the future 
+- A Mobile app in the future - I'm tying but its not really looking good 
+- A new Settings page that is also work in progress 😿
 ---
 
 
 
+####  Note : This project is inpired by [R34app](https://r34.app/)
 ####  Please do contribute 🤝 , if you're interested in this project ❤️
 #### You can contact me on Discord:
  <pre>alexcs_ye</pre>

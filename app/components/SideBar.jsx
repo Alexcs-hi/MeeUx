@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 
 
+
 export default function SideBar() {
 
   const { visible, toggleSideBar } = useSideBar();
@@ -39,7 +40,9 @@ export default function SideBar() {
           </div>
 
           <h1 className="font-bold text-3xl">Search</h1>
+
           <SearchBar />
+
 
         </div>
 
@@ -49,7 +52,7 @@ export default function SideBar() {
             toggleSideBar();
             setIsSearched(true);
             window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-          }} className="flex-1 cursor-pointer border border-gray-600/50 rounded-xl p-2 w-full hover:bg-gray-200/20 transition ">Search
+          }} className="flex-1 text-gray-300 cursor-pointer border border-gray-600/50 rounded-xl p-2 w-full hover:bg-gray-200/20 transition ">Search
           </button>
         </div>
 

@@ -15,13 +15,14 @@ export default function NavBar() {
     }
 
     return (
-        <div className=" z-1 sticky top-0 bg-black/50 backdrop-blur-2xl flex justify-between items-center p-2 lg:pl-20 lg:pr-20 border-b border-gray-400/30 mb-10 " >
+        <div className=" z-1 sticky top-0 bg-black/50 backdrop-blur-2xl flex justify-between items-center p-2 lg:pl-20 lg:pr-20 border-b border-gray-400/30 mb-10  " >
             <button onClick={() => router.push("/")
-            } className=" hover:bg-gray-200/20 p-2 rounded font-bold text-2xl cursor-pointer">MeeUx</button>
+            } className=" hover:bg-gray-200/20 p-2 rounded font-bold md:text-xl lg:text-2xl cursor-pointer">MeeUx</button>
 
             <div className="flex gap-4 ">
                 <NavButton route={"/"} name="Home" />
-                <NavButton route={"/"} name="Posts" />
+                <NavButton route={"/about"} name="About" />
+                <NavButton route={"/settings"} name="Settings" />
             </div>
 
             <div className="flex items-center gap-10 shrink-0">

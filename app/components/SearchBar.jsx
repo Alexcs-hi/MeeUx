@@ -3,11 +3,13 @@ import { useState, useEffect, useContext } from "react";
 import useR34Search from "../api/r34-search-api"
 import Tag from "./Tag"
 import { useSearch } from "../context/SearchContext";
+import SortBar from './SortBar';
 
 export default function SearchBar() {
 
   const { queryList, setQueryList } = useSearch();
   const [query, setQuery] = useState("");
+
 
 
   const { queries } = useR34Search(query);
@@ -38,7 +40,7 @@ export default function SearchBar() {
       </div>
 
       {query && queries?.length > 0 && (
-        <div className="flex flex-wrap max-h-40  overflow-auto">
+        <div className="flex flex-wrap max-h-40  overflow-auto z-50 absolute top-48 bg-black border rounded border-gray-200/50 mr-5">
 
           {queries.map((q, i) => (
             <div
@@ -46,6 +48,7 @@ export default function SearchBar() {
               className=" p-2 rounded text-gray-400 transition  hover:bg-gray-200/20 cursor-pointer truncate"
               onClick={() => {
                 setQueryList(prev => prev.some(item => item.name === q.value) ? prev : [...prev, { name: q.value, excluded: false }])
+                setQuery("");
               }}
             >
               {q.label}
@@ -55,9 +58,10 @@ export default function SearchBar() {
       )}
 
 
+      <SortBar />
 
       {queryList && queryList.length > 0 && (
-        <h1>Selected Tags</h1>
+        <h1 className="text-gray-300">Selected Tags</h1>
       )}
 
 
@@ -78,7 +82,7 @@ export default function SearchBar() {
       {queryList && queryList.length > 0 && (
         <button onClick={() => {
           setQueryList([])
-        }} className="p-2 mt-2 border border-gray-200/20 rounded-xl hover:bg-gray-200/20 transition">Clear All</button>
+        }} className="text-gray-400 p-2 mt-2 border border-gray-200/20 rounded-xl hover:bg-gray-200/20 transition">Clear All</button>
       )}
 
     </div>
