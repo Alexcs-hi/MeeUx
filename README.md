@@ -5,6 +5,9 @@ Some features are still in progress — this is a **work-in-progress project**.
 
 ---
 
+## 🔗 Try it here [MeeUX](https://meeux.vercel.app/posts)
+  or https://meeux.vercel.app
+
 ## ✨ Current Features
 
 - Browse Rule34 posts  
