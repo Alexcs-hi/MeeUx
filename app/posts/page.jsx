@@ -25,9 +25,6 @@ export default function posts() {
     observer.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting ){
         setPageNumber(prev => prev + 1);
-        console.log("visible");
-         console.log(hasMore);
-         
       }
     } )
     if (node) observer.current.observe(node)
@@ -45,9 +42,6 @@ export default function posts() {
     setTags(prev => prev  +  rating + score + upload);
 
     setIsSearched(false);
-    console.log(queryList);
-    
-    console.log(isSearched);
     
     }
 
@@ -59,7 +53,7 @@ export default function posts() {
         <div className="flex flex-col items-center justify-between gap-4    ">
             { Array.isArray(posts) &&  posts.length > 0 ? ( posts.map((post , index) => (
               posts.length === index + 1 ?(
-                <div key={`${post.id}+${index}`} ref={lastPostElement}> <Post key={post.id} post = {post} /></div>
+                <div key={`${post.file_url}+${index}`} ref={lastPostElement}> <Post key={post.id} post = {post} /></div>
                
               ) : ( 
                 <Post key={post.id} post = {post} />

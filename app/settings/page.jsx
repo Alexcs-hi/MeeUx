@@ -1,6 +1,6 @@
 
 
-function Settings() {
+function settings() {
   return (
     <div className="p-4 flex  flex-col gap-4 w-full lg:w-1/2 md:w-2/3 mx-auto" >
       <div className=" border-gray-300/20 border rounded p-4 flex flex-col gap-4 ">
@@ -38,4 +38,4 @@ function Settings() {
   )
 }
 
-export default Settings
+export default settings

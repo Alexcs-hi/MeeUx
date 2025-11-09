@@ -6,6 +6,7 @@
   import SideBarProvider from "./context/SideBarToggle";
   import {SearchProvider} from "./context/SearchContext";
   import {SortProvider} from "./context/SortContext";
+  import {FavoriteProvider} from './context/FavoriteContext';
 
   const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -41,9 +42,11 @@
           <SideBarProvider>
             <SearchProvider>
               <SortProvider>
+                <FavoriteProvider>
               <SideBar />
               <NavBar />
               {children}
+              </FavoriteProvider>
               </SortProvider>
             </SearchProvider>
           </SideBarProvider>

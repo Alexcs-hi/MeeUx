@@ -11,6 +11,8 @@ Some features are still in progress — this is a **work-in-progress project**.
 - Infinite scrolling for smooth browsing  
 - Tag 🏷️ search with autocomplete
 - Sort posts based on **Rating** , **Upload date** or **Score**
+- Download your favorite images/videos
+- Save posts to favorites
 
 
 ## 📸 Screenshots
@@ -47,12 +49,11 @@ Some features are still in progress — this is a **work-in-progress project**.
    npm run dev
 
 ## ⚒️ Work-In-Progress Features
-
-- **Download support** for images/videos  
-- **Favorites** — save posts locally  
 - **Additional themes** for customization  
 - A Mobile app in the future - I'm tying but its not really looking good 
 - A new Settings page that is also work in progress 😿
+- More customization yee
+- To be able to browse without any api key 
 ---
 
 

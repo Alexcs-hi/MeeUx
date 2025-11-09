@@ -22,6 +22,7 @@ export default function NavBar() {
             <div className="flex gap-4 ">
                 <NavButton route={"/"} name="Home" />
                 <NavButton route={"/about"} name="About" />
+                <NavButton route={"/favorites"} name="Favorites" />
                 <NavButton route={"/settings"} name="Settings" />
             </div>
 

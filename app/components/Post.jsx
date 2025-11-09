@@ -1,9 +1,12 @@
 "use client";
 import { useState } from "react";
-
+import { saveFile } from "../utils/saveFile";
+import {useFavorite} from "../context/FavoriteContext";
+ 
 
 
 export default function Post({ post }) {
+  const {favorites , addFavorite , removeFavorite} = useFavorite();
   const tags = post.tags.split(" ");
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -50,33 +53,41 @@ export default function Post({ post }) {
             <img className="w-8 grayscale invert brightness-1 " src="/share.png" alt="share_icon" />
           </button>
 
+        { favorites.some(f => f.id === post.id) ? (<button onClick={() => removeFavorite(post)} className='cursor-pointer p-2   rounded hover:bg-gray-200/20 transition'>
+          <img className="w-8 invert" src="/unfavorite.png" alt="unfavorite" />
+          </button>) : 
           <button onClick={() => {
-            window.alert("working on this feature");
+            addFavorite(post);
           }} className="cursor-pointer p-2 rounded hover:bg-gray-200/20 transition">
             <img className="w-8 invert" src="/heart.png" alt="heart_icon" />
-          </button>
+          </button>}
+
 
           <button onClick={() => {
-            window.alert("You can right click to download the image for now ");
-
+            saveFile(post.file_url);
           }} className="cursor-pointer p-2 rounded hover:bg-gray-200/20 transition">
             <img className="w-8 invert" src="/download.png" alt="download_icon" />
           </button>
 
+        
         </div>
 
-        <button onClick={() => {
-          setIsTags(prev => !prev)
+        
+       
+
+        <button onClick={  () => {
+         setIsTags(prev => !prev)
         }} className="cursor-pointer p-2 rounded hover:bg-gray-200/20 transition">
           <img className="w-7 invert" src="/down-arrow.png" alt="arrow_down_icon" />
         </button>
 
 
+
       </div>
 
 
-      <div className=" flex flex-wrap w-full  gap-2 ">{isTags && tags.map((tag) =>
-        <button className=" cursor-pointer p-2 text-gray-400 border-gray-500 border rounded hover:bg-gray-200/20" key={tag}>{tag}</button>
+      <div className=" flex flex-wrap w-full  gap-2 ">{isTags && tags.map((tag , index) =>
+        <button className=" cursor-pointer p-2 text-gray-400 border-gray-500 border rounded hover:bg-gray-200/20" key={`${tag}+${index}`}>{tag}</button>
       )}</div>
 
     </div>

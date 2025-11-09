@@ -6,7 +6,7 @@
   } from "react";
 
   // PASTE YOUR GENERATED KEY HERE AND DO NOT SHARE IT 
-  const user_id_key = "YOUR GENERATED KEY HERE";
+  const user_id_key = "YOU GENERATED KEY HERE";
   //--------------------------------------------
 
 
@@ -51,8 +51,7 @@
 
 
           setPosts(prev => (pageNumber === 0 ? data : [...prev, ...data]));
-
-          setHasMore(data.length === limit)
+          setHasMore(data.length === limit);
 
         } catch (err) {
           console.error("Fetch error:", err);
