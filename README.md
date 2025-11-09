@@ -46,11 +46,12 @@ Some features are still in progress — this is a **work-in-progress project**.
    git clone https://github.com/Alexcs-hi/MeeUx.git
    cd meeux
    npm install
+   cp .env.example .env
    npm run dev
-
+4. **Before running** make sure to paste Your Generated api key in the .env file
 ## ⚒️ Work-In-Progress Features
-- **Additional themes** for customization  
-- A Mobile app in the future - I'm tying but its not really looking good 
+- **Additional themes**   
+- A Mobile app in the future - I'm trying but its not really looking good 
 - A new Settings page that is also work in progress 😿
 - More customization yee
 - To be able to browse without any api key 

@@ -56,7 +56,7 @@ export default function posts() {
                 <div key={`${post.file_url}+${index}`} ref={lastPostElement}> <Post key={post.id} post = {post} /></div>
                
               ) : ( 
-                <Post key={post.id} post = {post} />
+                <Post key={`${post.file_url}+${index}`} post = {post} />
               )
            ))) : (<div>{!loading && hasMore && "You might have entered wrong api key , pls try again :3"}</div>)}
 
