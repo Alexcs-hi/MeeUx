@@ -24,8 +24,11 @@ export default function posts() {
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting ){
-        setPageNumber(prev => prev + 1);
-      }
+        setTimeout(() => {
+              setPageNumber(prev => prev + 1);
+        }, 150);
+      
+      } 
     } )
     if (node) observer.current.observe(node)
   }, [loading]);
@@ -50,9 +53,9 @@ export default function posts() {
   
 
     return (
-        <div className="flex flex-col items-center justify-between gap-4    ">
+        <div className="flex flex-col items-center justify-between gap-4  overflow-hidden   ">
             { Array.isArray(posts) &&  posts.length > 0 ? ( posts.map((post , index) => (
-              posts.length === index + 1 ?(
+              posts.length === index +3 ?(
                 <div key={`${post.file_url}+${index}`} ref={lastPostElement}> <Post key={post.id} post = {post} /></div>
                
               ) : ( 

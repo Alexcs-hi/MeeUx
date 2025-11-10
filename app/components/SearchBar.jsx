@@ -32,7 +32,7 @@ export default function SearchBar() {
 
 
   return (
-    <div className="w-full flex flex-col gap-4 h-160 overflow-auto">
+    <div className="w-full flex flex-col gap-4   overflow-auto">
       <div className=" w-full ">
         <input onChange={(e) => {
           handleQuery(e)
@@ -67,7 +67,7 @@ export default function SearchBar() {
 
       {queryList && queryList?.length > 0 && (
 
-        <div className="flex border-t pt-4 border-gray-400/30 gap-2 flex-wrap  max-h-60  overflow-auto">
+        <div className="flex border-t pt-4 border-gray-400/30 gap-2 flex-wrap  max-h-30 lg:max-h-60 md:max-h-40  overflow-auto">
 
           {queryList.map((q, index) => (
 

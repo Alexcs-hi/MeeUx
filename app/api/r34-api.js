@@ -26,15 +26,9 @@
       const fetchData = async () => {
 
         try {
-
           const res = await fetchPosts(pageNumber , tags , limit);
-          
-          console.log(res.length);
-          
-
 
           if (typeof res == "string") {alert("You might have pasted wrong api key , please check"); return;};
-
 
           setPosts(prev => (pageNumber === 0 ? res : [...prev, ...res]));
 
@@ -47,12 +41,8 @@
         } finally {
           setIsLoading(false);
         }
-
-
-
       }
       fetchData();
-
 
     }, [pageNumber, tags])
 

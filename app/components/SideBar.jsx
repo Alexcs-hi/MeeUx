@@ -30,16 +30,16 @@ export default function SideBar() {
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-10"
         />
       )}
-      <div className={` transition duration-400 z-40 flex flex-col items-center justify-between border-l border-gray-600 rounded  p-4 fixed  right-0 w-99 h-screen bg-black 
+      <div className={` transition duration-400 z-40 flex flex-col items-center justify-between border-l border-gray-600 rounded  p-4 fixed  right-0  w-full md:w-99  lg:w-99 h-dvh overflow-auto bg-black 
         ${visible ? "translate-x-0" : "translate-x-full"}`}>
         <div className="flex flex-col gap-4 items-center w-full">
           <div className="flex w-full">
             <button onClick={() => toggleSideBar()} className="rounded p-2 cursor-pointer hover:bg-gray-200/20 transition ">
               <img className="invert w-7 " src="/cross.png" alt="cross_icon" />
             </button>
-          </div>
+          </div>  
 
-          <h1 className="font-bold text-3xl">Search</h1>
+          <h1 className="font-bold text-3xl ">Search</h1>
 
           <SearchBar />
 
@@ -52,7 +52,7 @@ export default function SideBar() {
             toggleSideBar();
             setIsSearched(true);
             window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-          }} className="flex-1 text-gray-300 cursor-pointer border border-gray-600/50 rounded-xl p-2 w-full hover:bg-gray-200/20 transition ">Search
+          }} className="  text-gray-300 cursor-pointer border border-gray-600/50 rounded-xl p-2 w-full hover:bg-gray-200/20 transition  ">Search
           </button>
         </div>
 
