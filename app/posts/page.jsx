@@ -5,6 +5,7 @@ import Post from "../components/Post";
 import {useSearch} from "../context/SearchContext";
 import {useSort} from "../context/SortContext";
 import {useToolBar} from '../context/PostToolBarContext';
+ import PostToolBar from '../components/PostToolBar';
 
 
 export default function posts() {
@@ -52,7 +53,15 @@ export default function posts() {
 }, [isSearched]);
 
     return (
-     <div className={` ${view === "grid"  ? "columns-1 sm:columns-2 md:columns-2 lg:columns-3  [&>div:not(:first-child)]:mt-5  " : " flex flex-col items-center gap-4 " }   overflow-hidden`}  >
+     
+           
+           <div>
+
+              <PostToolBar />  
+
+           <div className={` ${view === "grid"  ? "columns-1 sm:columns-2 md:columns-2 lg:columns-3  [&>div:not(:first-child)]:mt-5  " : " flex flex-col items-center gap-4 " }   overflow-hidden`}  >
+                  
+           
             { Array.isArray(posts) &&  posts.length > 0 ? ( posts.map((post , index) => (
               posts.length === index +3 ?(
                 <div key={`${post.file_url}+${index}`} ref={lastPostElement}>
@@ -68,6 +77,8 @@ export default function posts() {
           <div>{ !loading && !hasMore && posts.length <= 0 && "No posts found"}</div>
           <div className="p-2">{ !hasMore &&  !loading && "No More Posts found"}</div>
         </div>
+
+              </div>
 
        
      

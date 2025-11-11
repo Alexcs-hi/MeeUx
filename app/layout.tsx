@@ -8,7 +8,7 @@
   import {SortProvider} from "./context/SortContext";
   import {FavoriteProvider} from './context/FavoriteContext';
   import {PostToolBarProvider} from './context/PostToolBarContext';
-  import PostToolBar from './components/PostToolBar';
+ 
 
   const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -48,7 +48,7 @@
                   <PostToolBarProvider>
               <SideBar />
               <NavBar />
-              <PostToolBar />  
+     
               {children}
               </PostToolBarProvider>
               </FavoriteProvider>
