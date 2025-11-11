@@ -4,7 +4,7 @@ export const saveFile = (url) => {
   a.download = url.split("/").pop();  
   document.body.appendChild(a);
   a.click();
-  alert("Download in progress please wait.");
+  alert("Download in progress please wait. It might take some time ");
   a.remove();
 };
   

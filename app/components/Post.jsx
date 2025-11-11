@@ -34,10 +34,11 @@ export default function Post({ post }) {
               }`}
           />) : (<img 
             
-         loading="lazy" onError={() => setError(true)} onLoad={() => setLoaded(true)}
+         loading="lazy"
+         decoding="async" onError={() => setError(true)} onLoad={() => setLoaded(true)}
             className={`w-160    transition-opacity duration-500 
             ${loaded ? "opacity-100" : "opacity-0"
-              }`} src={post.file_url}
+              }`} src={`/api/image?url=${encodeURIComponent(post.file_url)}`}
             alt={post.id} />)
 
       )

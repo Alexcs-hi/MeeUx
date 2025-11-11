@@ -6,7 +6,7 @@ export async function GET(request){
         return new Response("Missing URL", { status: 400 });
     }
 
-    const res = await fetch(fileUrl, { cache: 'no-store' })
+    const res = await fetch(fileUrl)
     const blob = await res.arrayBuffer();
 
  
