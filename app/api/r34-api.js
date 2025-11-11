@@ -7,17 +7,13 @@
 
   import {fetchPosts} from '../actions/fetchPost';
 
-  const limit = 10;
-
-
+  const limit = 20;
 
   export default function useR34Posts(pageNumber, tags) {
     
     const [posts, setPosts] = useState([]);
     const [loading, setIsLoading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
-
-
 
     useEffect(() => {
 

@@ -12,12 +12,16 @@ export default function Post({ post }) {
   const [error, setError] = useState(false);
   const [isTags, setIsTags] = useState(false);
   const url_end = post.file_url.slice(-4);
-  const aspectRatio = post.height / post.width;
-  const displayHeight = 640 * aspectRatio;
+   
   return (
-    <div className=" flex flex-col gap-2 p-2 lg:p-4 border border-gray-400/30 rounded w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+    <div  className=" relative h-fit flex flex-col gap-2 p-2 lg:p-4 border border-gray-400/30 rounded w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl">
 
-      {!loaded && !error && <div style={{ height: `${displayHeight}px` }} className="  w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl  bg-gray-600 animate-pulse" />}
+
+    <div style={{
+      aspectRatio: `${post.width} / ${post.height}`,
+    }} className="flex-1 relative ">
+
+       {!loaded && !error && <div className="  w-full  h-full  top-0 left-0 absolute  bg-gray-600/20 animate-pulse" />}
 
       {!error ? (
         url_end == ".mp4" ? (
@@ -25,11 +29,13 @@ export default function Post({ post }) {
             onLoadedData={() => setLoaded(true)}
             src={post.file_url}
             controls
-            className={`w-160  object-cover transition-opacity duration-500 
+            className={`w-160  transition-opacity duration-500 
             ${loaded ? "opacity-100" : "opacity-0"
               }`}
-          />) : (<img loading="lazy" onError={() => setError(true)} onLoad={() => setLoaded(true)}
-            className={`w-160  object-cover transition-opacity duration-500 
+          />) : (<img 
+            
+         loading="lazy" onError={() => setError(true)} onLoad={() => setLoaded(true)}
+            className={`w-160    transition-opacity duration-500 
             ${loaded ? "opacity-100" : "opacity-0"
               }`} src={post.file_url}
             alt={post.id} />)
@@ -40,6 +46,10 @@ export default function Post({ post }) {
 
         (<div className="w-160">failed to load image/video</div>)}
 
+
+    </div>
+
+     
 
 
 

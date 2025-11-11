@@ -4,7 +4,7 @@ import  useR34Posts from "../api/r34-api";
 import Post from "../components/Post";
 import {useSearch} from "../context/SearchContext";
 import {useSort} from "../context/SortContext";
-
+import {useToolBar} from '../context/PostToolBarContext';
 
 
 export default function posts() {
@@ -13,6 +13,7 @@ export default function posts() {
    const {rating , score , upload} = useSort();
   const [pageNumber , setPageNumber ] = useState(0);
  const [tags , setTags] = useState("");
+ const {view} = useToolBar();
 
 
   const {posts , loading , hasMore }  = useR34Posts(pageNumber , tags);   
@@ -50,22 +51,25 @@ export default function posts() {
 
 }, [isSearched]);
 
-  
-
     return (
-        <div className="flex flex-col items-center justify-between gap-4  overflow-hidden   ">
+     <div className={` ${view === "grid"  ? "columns-1 sm:columns-2 md:columns-2 lg:columns-3  [&>div:not(:first-child)]:mt-5  " : " flex flex-col items-center gap-4 " }   overflow-hidden`}  >
             { Array.isArray(posts) &&  posts.length > 0 ? ( posts.map((post , index) => (
               posts.length === index +3 ?(
-                <div key={`${post.file_url}+${index}`} ref={lastPostElement}> <Post key={post.id} post = {post} /></div>
-               
+                <div key={`${post.file_url}+${index}`} ref={lastPostElement}>
+                   <Post key={post.id} post = {post} />
+                   </div>
+                
               ) : ( 
-                <Post key={`${post.file_url}+${index}`} post = {post} />
+                <Post  key={`${post.file_url}+${index}`} post = {post} />
               )
            ))) : (<div>{!loading && hasMore && "You might have entered wrong api key , pls try again :3"}</div>)}
 
           <div>{loading && hasMore && "Loading ...." }</div>
           <div>{ !loading && !hasMore && posts.length <= 0 && "No posts found"}</div>
           <div className="p-2">{ !hasMore &&  !loading && "No More Posts found"}</div>
-        </div>  
+        </div>
+
+       
+     
     );
 }
