@@ -32,7 +32,7 @@ export default function SearchBar() {
 
 
   return (
-    <div className="w-full flex flex-col gap-4   overflow-auto">
+    <div className="w-full flex flex-col gap-4   ">
       <div className=" w-full ">
         <input onChange={(e) => {
           handleQuery(e)
@@ -59,6 +59,7 @@ export default function SearchBar() {
 
 
       <SortBar />
+      
 
       {queryList && queryList.length > 0 && (
         <h1 className="text-gray-300">Selected Tags</h1>

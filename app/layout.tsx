@@ -8,6 +8,7 @@
   import {SortProvider} from "./context/SortContext";
   import {FavoriteProvider} from './context/FavoriteContext';
   import {PostToolBarProvider} from './context/PostToolBarContext';
+  
  
 
   const geistSans = Geist({
@@ -50,6 +51,8 @@
               <NavBar />
      
               {children}
+              
+            
               </PostToolBarProvider>
               </FavoriteProvider>
               </SortProvider>

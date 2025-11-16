@@ -1,32 +1,41 @@
-import { useSort } from '../context/SortContext'
-
+import { useSort } from '../context/SortContext';
+import DropDown from './DropDown/DropDown'
+import { useState } from 'react';
 
 function SortBar() {
-    const { setRating, setScore, setUpload } = useSort();
+
+  const {setScore , setRating , setUpload} = useSort();
+
+    const scoreOptions = [
+  { name: "Score", value: "" },
+  { name: "Highest", value: "+sort%3ascore%3adesc+" },
+  { name: "Lowest", value: "+sort%3ascore%3aasc+" }
+];
+
+const ratingOptions = [
+  { name: "Rating", value: "" },
+  { name: "Safe", value: "+rating%3asafe+" },
+  { name: "Explicit", value: "+rating%3aexplicit+" },
+  { name: "Questionable", value: "+rating%3aquestionable+" }
+];
+
+const uploadOptions = [
+  { name: "Uploaded", value: "" },
+  { name: "Recently", value: "+sort%3aupdated%3adesc+" },
+  { name: "Oldest", value: "+sort%3aupdated%3aasc+" }
+];
+
     return (
         <div className="flex flex-col gap-2  ">
             <h1 className="text-gray-300    ">Sort By :</h1>
             <div className="flex flex-wrap gap-2 border-t pt-4 border-gray-200/20 text-gray-400">
 
+            <DropDown setSortableValue={setScore} name={scoreOptions[0].name} content={scoreOptions} />
+            <DropDown setSortableValue={setRating} name={ratingOptions[0].name} content={ratingOptions} />
+            <DropDown setSortableValue={setUpload} name={uploadOptions[0].name} content={uploadOptions} />
+           
+ 
 
-                <select onChange={(e) => { setScore(e.target.value) }} className=" outline-none  border border-gray-200/20 rounded p-2 bg-black" name="Rating" >
-                    <option value="">Score</option>
-                    <option value="+sort%3ascore%3adesc+">Highest</option>
-                    <option value="+sort%3ascore%3aasc+">Lowest</option>
-                </select>
-
-                <select onChange={(e) => { setRating(e.target.value) }} className="  outline-none border border-gray-200/20 rounded p-2 bg-black" name="Rating" >
-                    <option value="">Rating</option>
-                    <option value="+rating%3asafe+">Safe</option>
-                    <option value="+rating%3aexplicit+">Explicit</option>
-                    <option value="+rating%3aquestionable+">Questionable</option>
-                </select>
-
-                <select onChange={(e) => { setUpload(e.target.value) }} className="  outline-none border border-gray-200/20 rounded p-2 bg-black" name="Rating" >
-                    <option value="">Uploaded</option>
-                    <option value="+sort%3aupdated%3adesc+">Recently</option>
-                    <option value="+sort%3aupdated%3aasc+">Oldest</option>
-                </select>
             </div>
         </div>
     )
