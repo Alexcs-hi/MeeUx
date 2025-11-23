@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext , useRef } from "react";
 import useR34Search from "../api/r34-search-api"
 import Tag from "./Tag"
 import { useSearch } from "../context/SearchContext";
@@ -9,10 +9,27 @@ export default function SearchBar() {
 
   const { queryList, setQueryList } = useSearch();
   const [query, setQuery] = useState("");
+  const [open , setOpen] = useState(false);
 
 
 
   const { queries } = useR34Search(query);
+
+    const queriesRef = useRef();
+
+   useEffect(() => {
+
+    const handler = (event) => {
+        if(queriesRef.current && !queriesRef.current.contains(event.target)){
+            setOpen(false);
+        }
+    }
+
+    document.addEventListener("click" , handler);
+
+    return () => document.removeEventListener("click" ,  handler)
+
+   }, [queriesRef]);
 
 
 
@@ -34,18 +51,19 @@ export default function SearchBar() {
   return (
     <div className="w-full flex flex-col gap-4   ">
       <div className=" w-full ">
-        <input onChange={(e) => {
+        <input   onChange={(e) => {
           handleQuery(e)
-        }} className="p-4 rounded-full border border-gray-600/50 w-full outline-0" type="text" placeholder="Search R34" />
+          setOpen(true)
+        }} className="p-4 rounded-full border border-gray-600/50 w-full   outline-0  focus:border-gray-200/40   " type="text" placeholder="Search R34" />
       </div>
 
       {query && queries?.length > 0 && (
-        <div className="flex flex-wrap max-h-40  overflow-auto z-50 absolute top-48 bg-black border rounded border-gray-200/50 mr-5">
+        <div ref={queriesRef} style={{ scrollbarWidth: "none"}} className={` ${open ? "opacity-100  pointer-events-auto " : "opacity-0 pointer-events-none"}  flex flex-wrap max-h-40  overflow-auto z-50 absolute top-48 bg-black/30 backdrop-blur-sm  border border-gray-200/20 rounded-xl mr-5`}>
 
           {queries.map((q, i) => (
             <div
               key={`${q.value}-${i}`}
-              className=" p-2 rounded text-gray-400 transition  hover:bg-gray-200/20 cursor-pointer truncate"
+              className=" p-2 rounded text-gray-400 transition   hover:bg-gray-200/20 cursor-pointer truncate"
               onClick={() => {
                 setQueryList(prev => prev.some(item => item.name === q.value) ? prev : [...prev, { name: q.value, excluded: false }])
                 setQuery("");
@@ -62,7 +80,7 @@ export default function SearchBar() {
       
 
       {queryList && queryList.length > 0 && (
-        <h1 className="text-gray-300">Selected Tags</h1>
+        <h1 className="text-gray-300 text-sm mt-2">Selected Tags</h1>
       )}
 
 

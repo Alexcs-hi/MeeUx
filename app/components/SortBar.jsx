@@ -27,7 +27,7 @@ const uploadOptions = [
 
     return (
         <div className="flex flex-col gap-2  ">
-            <h1 className="text-gray-300    ">Sort By :</h1>
+            <h1 className="text-gray-300  text-sm   ">Sort By :</h1>
             <div className="flex flex-wrap gap-2 border-t pt-4 border-gray-200/20 text-gray-400">
 
             <DropDown setSortableValue={setScore} name={scoreOptions[0].name} content={scoreOptions} />

@@ -2,9 +2,9 @@ import React from 'react'
 
 function about() {
   return (
-    <div className='p-4 flex flex-col items-center'>
+    <div className='p-4 flex flex-col items-center '>
       <h1 className='italic text-gray-400 '>First of all ,  if you're reading this , thank you very much for visiting! :D</h1>
-      <div className='border border-gray-200/20  rounded  flex flex-col gap-4 p-2 w-full lg:w-1/2 md:w-2/3 mx-auto'>
+      <div className='border border-gray-200/20  rounded-md  flex flex-col gap-4 p-2 w-full lg:w-1/2 md:w-2/3 mx-auto bg-gray-600/20 '>
 
         <h1 className='text-2xl'>About This Project</h1>
         <p className='text-gray-300'>i created this project to learn more about web dev  , its something that i have been working

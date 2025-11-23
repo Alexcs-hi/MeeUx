@@ -3,7 +3,7 @@
 function settings() {
   return (
     <div className="p-4 flex  flex-col gap-4 w-full lg:w-1/2 md:w-2/3 mx-auto" >
-      <div className=" border-gray-300/20 border rounded p-4 flex flex-col gap-4 ">
+      <div className=" border-gray-300/20 bg-gray-600/20 border rounded-md p-4 flex flex-col gap-4 ">
         <h1 className="text-2xl ">Theme</h1>
         <div className="flex items-center gap-4 flex-wrap">
           <h1 className="text-gray-300">Select your desired theme</h1>
@@ -12,7 +12,7 @@ function settings() {
         </div>
       </div>
 
-      <div className=" border-gray-300/20 border rounded p-4 flex flex-col gap-4 ">
+      <div className=" border-gray-300/20 bg-gray-600/20 border rounded-md p-4 flex flex-col gap-4 ">
         <h1 className="text-2xl ">API KEY</h1>
         <div className="flex items-center gap-4 flex-wrap">
           <h1 className="text-gray-300">Enter your API key</h1>
@@ -23,7 +23,7 @@ function settings() {
       </div>
 
 
-      <div className=" border-gray-300/20 border rounded p-4 flex flex-col gap-4 ">
+      <div className=" border-gray-300/20 bg-gray-600/20 border rounded-md p-4 flex flex-col gap-4 ">
         <h1 className="text-2xl ">Excluded Tags</h1>
         <div className="flex items-center gap-4 flex-wrap">
           <h1 className="text-gray-300">Enter tags that you want to exclude by default</h1>

@@ -22,10 +22,10 @@ Some features are still in progress — this is a **work-in-progress project**.
 
 <div align="center" style="display: flex; gap: 10px; justify-content: center;   ">
   <a href="public/screen/meeux_screen1.png" target="_blank">
-    <img src="public/screen/meeux_screen1.png" height="350">
+    <img src="public/screen/new_meeux_screen_1.png" height="350">
   </a>
   <a href="public/screen/meeux_screen2.png" target="_blank">
-    <img src="public/screen/meeux_screen2.png" height="350">
+    <img src="public/screen/new_meeux_screen_2.png" height="350">
   </a>
 </div>
 
@@ -33,7 +33,7 @@ Some features are still in progress — this is a **work-in-progress project**.
 ## 🎥 Demo
 <div align="center">
   <a href="public/screen/meeux_demo.gif" target="_blank">
-    <img src="public/screen/meeux_demo.gif" height="500">
+    <img src="public/screen/new_meeux_demo.gif" height="500">
   </a>
 </div>
 
@@ -56,6 +56,7 @@ Some features are still in progress — this is a **work-in-progress project**.
 - **Additional themes**   
 - A Mobile app in the future - I'm trying but its not really looking good 
 - A new Settings page that is also work in progress 😿
+- Persist search one reload
 - More customization yee
 - To be able to browse without any api key 
 ---
