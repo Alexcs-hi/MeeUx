@@ -21,10 +21,10 @@ Some features are still in progress — this is a **work-in-progress project**.
 ## 📸 Screenshots
 
 <div align="center" style="display: flex; gap: 10px; justify-content: center;   ">
-  <a href="public/screen/meeux_screen1.png" target="_blank">
+  <a href="public/screen/new_meeux_screen_1.png" target="_blank">
     <img src="public/screen/new_meeux_screen_1.png" height="350">
   </a>
-  <a href="public/screen/meeux_screen2.png" target="_blank">
+  <a href="public/screen/new_meeux_screen_2.png" target="_blank">
     <img src="public/screen/new_meeux_screen_2.png" height="350">
   </a>
 </div>
@@ -32,7 +32,7 @@ Some features are still in progress — this is a **work-in-progress project**.
 
 ## 🎥 Demo
 <div align="center">
-  <a href="public/screen/meeux_demo.gif" target="_blank">
+  <a href="public/screen/new_meeux_demo.gif" target="_blank">
     <img src="public/screen/new_meeux_demo.gif" height="500">
   </a>
 </div>
