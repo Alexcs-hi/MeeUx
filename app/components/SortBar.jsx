@@ -1,6 +1,6 @@
 import { useSort } from '../context/SortContext';
 import DropDown from './DropDown/DropDown'
-import { useState } from 'react';
+ 
 
 function SortBar() {
 
