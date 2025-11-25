@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Comfortaa } from "next/font/google";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
@@ -53,6 +54,7 @@ export default function RootLayout({
                   <main className="sm:pt-19">
                     {children}
                     <SpeedInsights />
+                    <Analytics />
                   </main>
                 </PostToolBarProvider>
               </FavoriteProvider>
