@@ -13,6 +13,10 @@ import { useRouter } from "next/navigation";
 export default function posts() {
   const Router = useRouter();
 
+
+ 
+
+
   const {paramTags} = useParams();
   const ParameterTags = decodeURIComponent(paramTags);
   console.log(ParameterTags);
@@ -44,6 +48,25 @@ export default function posts() {
     if (node) observer.current.observe(node)
   }, [loading]);
 
+
+  useEffect(() => {
+  if (!isSearched) return;
+
+  setPageNumber(0);
+
+  const base = queryList
+    .map(tag => (tag.excluded ? `-${tag.name}` : tag.name))
+    .join("+");
+
+  const finalTags = base + rating + score + upload;
+
+  if (paramTags !== finalTags) {
+    Router.replace(`/posts/${finalTags}`);
+  }
+
+  setTags(finalTags);
+  setIsSearched(false); 
+}, [isSearched]);
 
 useEffect(() => {
   if (paramTags == "all") return;
@@ -86,24 +109,7 @@ useEffect(() => {
 
 
 
-useEffect(() => {
-  if (!isSearched) return;
 
-  setPageNumber(0);
-
-  const base = queryList
-    .map(tag => (tag.excluded ? `-${tag.name}` : tag.name))
-    .join("+");
-
-  const finalTags = base + rating + score + upload;
-
-  if (paramTags !== finalTags) {
-    Router.push(`/posts/${finalTags}`);
-  }
-
-  setTags(finalTags);
-  setIsSearched(false);
-}, [isSearched]);
 
 
   // useEffect(() => {
