@@ -40,13 +40,17 @@ export default function posts() {
 
   useEffect(() => {
     if (isSearched) {
-      setPageNumber(0) // Set page number back to 0 when searched 
-      setTags(
-        queryList
-          .map(tag => (tag.excluded ? `-${tag.name}` : tag.name))
-          .join("+")
-      );
-      setTags(prev => prev + rating + score + upload);
+      setPageNumber(0) // Set page number back to 0 when searched
+      
+      
+    const base = queryList
+      .map(tag => (tag.excluded ? `-${tag.name}` : tag.name))
+      .join("+");
+
+    const finalTags = base + rating + score + upload;
+
+
+      setTags(finalTags);
 
       setIsSearched(false);
 

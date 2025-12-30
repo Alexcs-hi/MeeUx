@@ -1,51 +1,45 @@
-  "use client";
+"use client";
 
-  import {
-    useEffect,
-    useState
-  } from "react";
+import { useEffect, useState } from "react";
 
-  import {fetchPosts} from '../actions/fetchPost';
+const limit = 20;
 
-  const limit = 20;
+export default function useR34Posts(pageNumber, tags) {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
 
-  export default function useR34Posts(pageNumber, tags) {
-    
-    const [posts, setPosts] = useState([]);
-    const [loading, setIsLoading] = useState(true);
-    const [hasMore, setHasMore] = useState(true);
+  useEffect(() => {
+    setLoading(true);
 
-    useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/r34", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pageNumber, tags }),
+        });
 
+        const data = await res.json();
 
-      setIsLoading(true);
-      const fetchData = async () => {
+        if (!res.ok) throw new Error(data.error);
 
-        try {
-          const res = await fetchPosts(pageNumber , tags , limit);
+        setPosts(prev =>
+          pageNumber === 0 ? data.posts : [...prev, ...data.posts]
+        );
 
-          if (typeof res == "string") {alert("You might have pasted wrong api key , please check"); return;};
-
-          setPosts(prev => (pageNumber === 0 ? res : [...prev, ...res]));
-
-          setHasMore(res.length === limit)
-
-        } catch (err) {
-          console.error("Fetch error:", err);
-          setPosts([]);
-          setHasMore(false)
-        } finally {
-          setIsLoading(false);
-        }
+        setHasMore(data.hasMore);
+      } catch (err) {
+        console.error(err);
+        setPosts([]);
+        setHasMore(false);
+      } finally {
+        setLoading(false);
       }
-      fetchData();
+    };
 
-    }, [pageNumber, tags])
+    fetchData();
+  }, [pageNumber, tags]);
 
-    return {
-      posts,
-      loading,
-      hasMore
-    }
-
-  }
+  return { posts, loading, hasMore };
+}
