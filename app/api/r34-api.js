@@ -1,45 +1,51 @@
-"use client";
+  "use client";
 
-import { useEffect, useState } from "react";
+  import {
+    useEffect,
+    useState
+  } from "react";
 
-const limit = 20;
+  import {fetchPosts} from '../actions/fetchPost';
 
-export default function useR34Posts(pageNumber, tags) {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [hasMore, setHasMore] = useState(true);
+  const limit = 20;
 
-  useEffect(() => {
-    setLoading(true);
+  export default function useR34Posts(pageNumber, tags) {
+    
+    const [posts, setPosts] = useState([]); 
+    const [loading, setIsLoading] = useState(true);
+    const [hasMore, setHasMore] = useState(true);
 
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/r34", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ pageNumber, tags }),
-        });
+    useEffect(() => {
 
-        const data = await res.json();
 
-        if (!res.ok) throw new Error(data.error);
+      setIsLoading(true);
+      const fetchData = async () => {
 
-        setPosts(prev =>
-          pageNumber === 0 ? data.posts : [...prev, ...data.posts]
-        );
+        try {
+          const res = await fetchPosts(pageNumber , tags , limit);
 
-        setHasMore(data.hasMore);
-      } catch (err) {
-        console.error(err);
-        setPosts([]);
-        setHasMore(false);
-      } finally {
-        setLoading(false);
+          if (typeof res == "string") {alert("You might have pasted wrong api key , please check"); return;};
+
+          setPosts(prev => (pageNumber === 0 ? res : [...prev, ...res]));
+
+          setHasMore(res.length === limit)
+
+        } catch (err) {
+          console.error("Fetch error:", err);
+          setPosts([]);
+          setHasMore(false)
+        } finally {
+          setIsLoading(false);
+        }
       }
-    };
+      fetchData();
 
-    fetchData();
-  }, [pageNumber, tags]);
+    }, [pageNumber, tags])
 
-  return { posts, loading, hasMore };
-}
+    return {
+      posts,
+      loading,
+      hasMore
+    }
+
+  }
