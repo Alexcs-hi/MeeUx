@@ -3,13 +3,7 @@
 export async function fetchPosts(pageNumber , tags , limit){
 
 
- fetch("https://ipapi.co/json/")
-  .then(res => res.json())
-  .then(data => {
-    console.log(data.country_name, data.city);
-    console.log("wsp");
-    
-  });
+  
 
         // If you're using offline use this url and remove the below one
         // const credentials = process.env.R34_CREDENTIALS;
