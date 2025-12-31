@@ -5,15 +5,12 @@ import { headers } from "next/headers";
 export async function fetchPosts(pageNumber , tags , limit){
 
  
+        fetch("https://ipapi.co/json/")
+          .then(res => res.json())
+          .then(data => {
+            console.log(data.country, data.city);
+          });
 
-        const h = headers();
-
-        const cnty = h.get("x-vercel-ip-country");
-        const ct = h.get("x-vercel-ip-city");
-        const rg = h.get("x-vercel-ip-country-region");
-        const i = h.get("x-vercel-forwarded-for");
-
-        console.log(cnty, ct, rg, i);
 
   
         // If you're using offline use this url and remove the below one
