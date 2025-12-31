@@ -51,7 +51,7 @@ Some features are still in progress — this is a **work-in-progress project**.
    npm install
    cp .env.example .env
    npm run dev
-4. **Before running** make sure to paste Your Generated api key in the .env file also check **meeux -> app -> api -> r34-api.js** and follow the steps there
+4. **Before running** make sure to paste Your Generated api key in the .env file
 ## ⚒️ Work-In-Progress Features
 - **Additional themes**   
 - A Mobile app in the future - I'm trying but its not really looking good 

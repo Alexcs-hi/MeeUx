@@ -52,7 +52,6 @@ export default function posts() {
   useEffect(() => {
   if (!isSearched) return;
 
-  if(queryList.length > 0){
   setPageNumber(0);
 
   const base = queryList
@@ -67,9 +66,6 @@ export default function posts() {
 
   setTags(finalTags);
   setIsSearched(false); 
-  }
-
-
 }, [isSearched]);
 
 useEffect(() => {
