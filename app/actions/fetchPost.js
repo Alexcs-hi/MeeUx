@@ -1,16 +1,6 @@
 "use server";
-import { headers } from "next/headers";
-
 
 export async function fetchPosts(pageNumber , tags , limit){
-
- 
-        fetch("https://ipapi.co/json/")
-          .then(res => res.json())
-          .then(data => {
-            console.log(data.country, data.city);
-          });
-
 
   
         // If you're using offline use this url and remove the below one
@@ -39,3 +29,4 @@ export async function fetchPosts(pageNumber , tags , limit){
             return [];
         }
 }
+
