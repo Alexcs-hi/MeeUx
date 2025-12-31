@@ -4,9 +4,7 @@
     useEffect,
     useState
   } from "react";
-
-  import {fetchPosts} from '../actions/fetchPost';
-
+ 
   const limit = 20;
 
   export default function useR34Posts(pageNumber, tags) {
@@ -15,6 +13,15 @@
     const [loading, setIsLoading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
 
+
+     // If you're using offline use this url and remove the below one
+    // const credentials = process.env.R34_CREDENTIALS;
+    // const url = `https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&json=1&pid=${pageNumber}&limit=${limit}&tags=${tags}&${credentials}`;
+
+
+    //remove this url with the above one for offline use 
+    const url = `https://fetch-posts.alexcs-hello.workers.dev/?query=${encodeURIComponent(tags)}&page=${pageNumber}&limit=${limit} `;
+
     useEffect(() => {
 
 
@@ -22,13 +29,25 @@
       const fetchData = async () => {
 
         try {
-          const res = await fetchPosts(pageNumber , tags , limit);
+            const res = await fetch(url);
+           
+        let data;
 
-          if (typeof res == "string") {alert("You might have pasted wrong api key , please check"); return;};
+          try {
+            data = await res.json();
+          } catch (err) {
+            console.log("JSON ERROR :", err);
+            data = [];
+          }
 
-          setPosts(prev => (pageNumber === 0 ? res : [...prev, ...res]));
 
-          setHasMore(res.length === limit)
+          if (typeof data == "string") return "You might have pasted wrong api key , please check";
+         
+
+
+          setPosts(prev => (pageNumber === 0 ? data : [...prev, ...data]));
+
+          setHasMore(data.length === limit)
 
         } catch (err) {
           console.error("Fetch error:", err);
