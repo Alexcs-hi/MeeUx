@@ -10,6 +10,7 @@ import { SearchProvider } from "./context/SearchContext";
 import { SortProvider } from "./context/SortContext";
 import { FavoriteProvider } from './context/FavoriteContext';
 import { PostToolBarProvider } from './context/PostToolBarContext';
+import Script from "next/script";
 
 
 
@@ -41,6 +42,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+
+      <head>
+       
+      <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-KEEBZJQMJD"
+          strategy="afterInteractive"
+        />
+        <Script id="ga" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-KEEBZJQMJD');
+          `}
+        </Script>
+      </head>
+
       <body
         className={`${comfortaa.className} ${geistSans.variable} ${geistMono.variable} antialiased  `}
       >
