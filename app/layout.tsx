@@ -31,8 +31,15 @@ const comfortaa = Comfortaa({
 });
 
 export const metadata: Metadata = {
-  title: "MeeUx",
+   title: "MeeUx – Rule34 Browser",
   description: "MeeUx is a Rule34 browser and explorer built to let you easily browse, search, and explore posts from Rule34 with a clean, modern UI",
+  alternates: {
+    canonical: "https://meeux.vercel.app/posts/all",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
