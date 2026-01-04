@@ -11,6 +11,10 @@ export default function Post({ post }) {
   const [error, setError] = useState(false);
   const [isTags, setIsTags] = useState(false);
   const url_end = post.file_url.slice(-4);
+
+
+  
+  
    
   return (
     <div  className=" relative h-fit flex flex-col  gap-2 p-2 lg:p-4 border border-gray-400/30 rounded-md w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-black/20">
@@ -88,9 +92,26 @@ export default function Post({ post }) {
       </div>
 
 
-      <div className=" flex flex-wrap w-full max-h-60 overflow-auto  gap-2 ">{isTags && tags.map((tag, index) =>
+      <div className=" flex   flex-wrap w-full max-h-60 overflow-auto  gap-2 ">
+
+        {isTags &&   <div className="flex w-5/6 border-b border-gray-200/20 gap-2">
+            <h1 className="border rounded-xl border-gray-200/20 p-2 text-gray-400 hover:bg-gray-200/20 cursor-pointer mb-2 ">Score : {post.score }</h1>
+          {post.source && 
+            <a href={post.source} target="_blank">
+              <h1 className="border rounded-xl border-gray-200/20 p-2 text-gray-400 hover:bg-gray-200/20 cursor-pointer mb-2 underline ">Source</h1>
+            </a>}
+          
+        </div> }
+
+       
+
+        <div className="flex flex-wrap w-full gap-2">
+            {isTags && tags.map((tag, index) =>
         <button className=" cursor-pointer p-2 text-gray-400 border-gray-200/20 border rounded-xl hover:bg-gray-200/20" key={`${tag}+${index}`}>{tag}</button>
-      )}</div>
+      )}
+        </div>
+
+      </div>
 
     </div>
   )

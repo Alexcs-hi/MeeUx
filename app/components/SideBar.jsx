@@ -46,15 +46,15 @@ export default function SideBar() {
           <h1 className="font-bold text-3xl  ">Search</h1>
 
           <SearchBar />
-
+          
 
         </div>
 
         <div className="w-full flex flex-col gap-2">
 
           <div className=" hidden sm:flex  items-center justify-between border border-gray-600/20 rounded-xl  bg-gray-600/20 p-2 gap-2">
-            <button onClick={() => setView("list")} className="flex-1 flex flex-row gap-2 items-center  justify-center rounded-md transition active:scale-95  hover:bg-gray-200/20 p-1"><img className="w-5 h-5 invert-75" src="/list_view.png" alt="list_view" />List</button>
-            <button onClick={() => setView("grid")} className="flex-1 flex flex-row gap-2 items-center justify-center  rounded-md transition active:scale-95  hover:bg-gray-200/20 p-1"><img className="w-5 h-5 invert-75" src="/grid_view.png" alt="grid_view" />Grid</button>
+            <button onClick={() => setView("list")} className="flex-1 cursor-pointer flex flex-row gap-2 items-center  justify-center rounded-md transition active:scale-95  hover:bg-gray-200/20 p-1"><img className="w-5 h-5 invert-75" src="/list_view.png" alt="list_view" />List</button>
+            <button onClick={() => setView("grid")} className="flex-1 cursor-pointer flex flex-row gap-2 items-center justify-center  rounded-md transition active:scale-95  hover:bg-gray-200/20 p-1"><img className="w-5 h-5 invert-75" src="/grid_view.png" alt="grid_view" />Grid</button>
 
           </div>
 

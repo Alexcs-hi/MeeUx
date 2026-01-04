@@ -4,6 +4,7 @@ import { useSideBar } from "../context/SideBarToggle";
 import { useEffect, useState } from "react";
 import {useWindowSize} from '../hooks/useWindowSize'
 import {useWindowScroll} from '../hooks/useWindowScroll';
+ 
 
 export default function NavBar() {
 
@@ -13,7 +14,8 @@ export default function NavBar() {
 
     const [isMounted, setIsMounted] = useState(false);
 
-    
+ 
+
     useEffect(() => {
         setIsMounted(true);
     }, []);
@@ -45,7 +47,8 @@ export default function NavBar() {
     if (isMounted && width <= 639){
         return( 
             <div className={` ${direction == "down" ? "translate-y-full" : "translate-y-0"}  transition   z-1  bg-black/50 backdrop-blur-2xl fixed bottom-0 left-0 w-full  flex justify-evenly items-center  h-16 `}>
-                <button onClick={() => router.push("/")}
+                <button onClick={() => router.push("/")
+                }
                 className="hover:bg-gray-200/20  rounded-xl p-2 cursor-pointer active:scale-95 focus:bg-gray-600/30 transition"><img className="h-7 w-7 invert" src="/cat_paw.png" alt="cat_paw" />
                 </button>
 

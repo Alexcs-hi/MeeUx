@@ -1,3 +1,4 @@
+ "use client"
 import { useState , useEffect , useRef} from "react"
 import DropDownBtn from "./DropDownBtn"
 import DropDownContent from "./DropDownContent"
@@ -9,6 +10,8 @@ function DropDown({name , content ,  setSortableValue}) {
    const [open , setOpen] = useState(false);
    const [dropDownName , setDropDownName] = useState(name);
    const DropDownRef = useRef();
+
+   
 
    useEffect(() => {
 
@@ -27,6 +30,9 @@ function DropDown({name , content ,  setSortableValue}) {
    const toggleOpen = () => {
     setOpen(prev => !prev);     
    }
+
+   
+   
 
   return (
     <div ref={DropDownRef} className="relative">
