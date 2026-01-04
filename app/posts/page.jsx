@@ -1,5 +1,6 @@
  
 import ClientPosts from "./ClientPosts"
+import { Suspense } from "react";
 
 function posts() {
  
@@ -10,7 +11,9 @@ function posts() {
 
 
 <div className="flex-1">
-      <ClientPosts  />
+    <Suspense fallback={null}>
+      <ClientPosts />
+    </Suspense>
 </div>
 
 
