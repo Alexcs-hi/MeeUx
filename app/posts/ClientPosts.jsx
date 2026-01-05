@@ -110,6 +110,12 @@ export default function ClientPosts() {
   useEffect(() => {
 
     if (!isSearched) return;
+
+      fetch(`/api/logSearch${window.location.search}`, {
+    method: "POST",
+  });
+
+
     let base = "";
     setPageNumber(0);
     if (queryList.length > 0) {
