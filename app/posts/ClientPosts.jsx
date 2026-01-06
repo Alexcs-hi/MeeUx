@@ -111,9 +111,18 @@ export default function ClientPosts() {
 
     if (!isSearched) return;
 
-      fetch(`/api/logSearch${window.location.search}`, {
-    method: "POST",
-  });
+   fetch("/api/logSearch", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    tags,
+    rating,
+    score,
+    upload,
+  }),
+});
 
 
     let base = "";

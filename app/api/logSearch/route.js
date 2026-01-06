@@ -3,17 +3,12 @@ import { NextResponse } from "next/server";
 
 const sql = postgres(process.env.DATABASE_URL, {
   ssl: "require",
+  max: 1,
 });
-
 
 export async function POST(req) {
   try {
-    const { searchParams } = new URL(req.url);
-
-    const tags = searchParams.get("tags");
-    const rating = searchParams.get("rating");
-    const score = searchParams.get("score");
-    const upload = searchParams.get("upload");
+    const { tags, rating, score, upload } = await req.json();
 
     if (!tags && !rating && !score && !upload) {
       return NextResponse.json({ ok: true });
@@ -26,7 +21,7 @@ export async function POST(req) {
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error(err);
+    console.error("SEARCH LOG ERROR:", err);
     return NextResponse.json({ ok: false }, { status: 500 });
   }
 }
