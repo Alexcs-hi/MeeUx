@@ -60,8 +60,8 @@ export default function NavBar() {
                 className="hover:bg-gray-200/20 rounded-xl p-2 cursor-pointer  active:scale-95 focus:bg-gray-600/30 transition"><img className="h-7 w-7 invert" src="/heart.png" alt="favorites" />
                 </button>
 
-                <button onClick={() => router.push("/settings")} 
-                 className="hover:bg-gray-200/20 rounded-md p-2 cursor-pointer active:scale-95 focus:bg-gray-600/30 transition"><img className="h-7 w-7 invert" src="/cog.png" alt="settings" />
+                <button onClick={() => router.push("/about")} 
+                 className="hover:bg-gray-200/20 rounded-md p-2 cursor-pointer active:scale-95 focus:bg-gray-600/30 transition"><img className="h-7 w-7 invert" src="/about.png" alt="about" />
                  </button>
 
             </div>
