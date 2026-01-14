@@ -80,7 +80,7 @@ export default function SearchBar() {
       
 
       {queryList && queryList.length > 0 && (
-        <h1 className="text-gray-300 text-sm mt-2">Selected Tags</h1>
+        <h1 className="text-gray-300 md:text-sm  text-xs  mt-2">Selected Tags</h1>
       )}
 
 
@@ -101,7 +101,7 @@ export default function SearchBar() {
       {queryList && queryList.length > 0 && (
         <button onClick={() => {
           setQueryList([])
-        }} className="text-gray-400 p-2 mt-2 border border-gray-200/20 rounded-xl hover:bg-gray-200/20 transition">Clear All</button>
+        }} className="text-gray-400 md:text-md text-sm p-2 mt-2 border border-gray-200/20 rounded-xl hover:bg-gray-200/20 transition">Clear All</button>
       )}
 
     </div>
