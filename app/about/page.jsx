@@ -2,7 +2,7 @@ import React from 'react'
 
 function about() {
   return (
-    <div className='p-4 flex flex-col items-center gap-4 '>
+    <div className='p-4 flex flex-col items-center gap-4 overflow-auto '>
       <h1 className='italic text-gray-400 '>First of all ,  if you're reading this , thank you very much for visiting! :D</h1>
       <div className='border border-gray-200/20  rounded-md  flex flex-col gap-4 p-2 w-full lg:w-1/2 md:w-2/3 mx-auto bg-gray-600/20 '>
 
