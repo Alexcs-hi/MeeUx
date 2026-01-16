@@ -5,10 +5,10 @@ Some features are still in progress — this is a **work-in-progress project**.
 
 ---
 
-## 🔗 Try it here [MeeUX](https://meeux.vercel.app/posts)
+##  Try it here [MeeUX](https://meeux.vercel.app/posts)
   or https://meeux.vercel.app
 
-## ✨ Current Features
+##  Current Features
 
 - Browse Rule34 posts  
 - Infinite scrolling for smooth browsing  
@@ -18,7 +18,7 @@ Some features are still in progress — this is a **work-in-progress project**.
 - Save posts to favorites
 
 
-## 📸 Screenshots
+##  Screenshots
 
 <div align="center" style="display: flex; gap: 10px; justify-content: center;   ">
   <a href="public/screen/new_meeux_screen_1.png" target="_blank">
@@ -30,7 +30,7 @@ Some features are still in progress — this is a **work-in-progress project**.
 </div>
 
 
-## 🎥 Demo
+##  Demo
 <div align="center">
   <a href="public/screen/new_meeux_demo.gif" target="_blank">
     <img src="public/screen/new_meeux_demo.gif" height="500">
@@ -38,7 +38,7 @@ Some features are still in progress — this is a **work-in-progress project**.
 </div>
 
 
-## ⚙️ How To Use
+##  How To Use
 
 1. First make sure to have [Node.js](https://nodejs.org/en/download) (npm) and [Git](https://git-scm.com/install/windows) installed.  
 2. Create an account on [rule34.xxx](https://rule34.xxx/).  
@@ -52,13 +52,13 @@ Some features are still in progress — this is a **work-in-progress project**.
    cp .env.example .env
    npm run dev
 4. **Before running** make sure to paste Your Generated api key in the .env file
-## ⚒️ Work-In-Progress Features
+##  Work-In-Progress Features
 - **Additional themes**   
 - A Mobile app in the future - I'm trying but its not really looking good 
 - A new Settings page that is also work in progress 😿
 - Persist search one reload
 - More customization yee
-- To be able to browse without any api key 
+- To be able to browse locally without any api key 
 ---
 
 
