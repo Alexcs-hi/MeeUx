@@ -40,7 +40,7 @@ export default function Post({ post }) {
          decoding="async" onError={() => setError(true)} onLoad={() => setLoaded(true)}
             className={`   not-first-of-type:    transition-opacity duration-500 
             ${loaded ? "opacity-100" : "opacity-0"
-              }`} src={`/api/image?url=${encodeURIComponent(post.file_url)}`}
+              }`} src={`https://image-proxy.alexcs-hello.workers.dev?url=${encodeURIComponent(post.file_url)}`}
             alt={post.id} />)
 
       )

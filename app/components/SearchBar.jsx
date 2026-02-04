@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useContext , useRef } from "react";
-import useR34Search from "../api/r34-search-api"
+import useR34Search from "../utils/r34-search-api"
 import Tag from "./Tag"
 import { useSearch } from "../context/SearchContext";
 import SortBar from './SortBar';

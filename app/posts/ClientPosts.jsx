@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useRef, useCallback } from "react";
-import useR34Posts from "../api/r34-api";
+import useR34Posts from "../utils/r34-api";
 import Post from "../components/Post";
 import { useSearch } from "../context/SearchContext";
 import { useSort } from "../context/SortContext";
