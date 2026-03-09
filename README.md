@@ -54,11 +54,9 @@ Some features are still in progress — this is a **work-in-progress project**.
 4. **Before running** make sure to paste Your Generated api key in the .env file
 ##  Work-In-Progress Features
 - **Additional themes**   
-- A Mobile app in the future - I'm trying but its not really looking good 
-- A new Settings page that is also work in progress 😿
-- Persist search one reload
-- More customization yee
-- To be able to browse locally without any api key 
+- A Mobile app in the future - Working on it !
+- Persist search one reload - Done  
+- To be able to browse locally without any api key - Kinda Done ?
 ---
 
 
