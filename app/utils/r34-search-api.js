@@ -1,15 +1,10 @@
-"use client"
+"use client";
 
-import {
-  useState,
-  useEffect
-} from "react";
+import { useState, useEffect } from "react";
 
 const base_url = "https://api.rule34.xxx/autocomplete.php?q=";
 
-
 export default function useR34Search(query) {
-
   const [queries, setqueries] = useState([]);
 
   useEffect(() => {
@@ -24,31 +19,21 @@ export default function useR34Search(query) {
         const res = await fetch(`${base_url}${query}`, { signal: controller.signal });
         const data = await res.json();
         setqueries(data);
-        
       } catch (err) {
         if (err.name != "AbortError") {
           console.error("Fetch Error :", err);
         }
-
       }
-
-    }
+    };
 
     fetchData();
-
 
     return () => {
       controller.abort();
     };
-
-
-  }, [query])
-
-
-
-
+  }, [query]);
 
   return {
-    queries
-  }
+    queries,
+  };
 }

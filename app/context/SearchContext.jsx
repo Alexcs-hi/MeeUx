@@ -3,11 +3,11 @@ import { createContext, useContext, useState } from "react";
 
 const SearchContext = createContext(null);
 
-export  function SearchProvider({ children }) {
+export function SearchProvider({ children }) {
   const [queryList, setQueryList] = useState([]);
-  const [isSearched , setIsSearched] = useState(false)
+  const [isSearched, setIsSearched] = useState(false);
   return (
-    <SearchContext.Provider value={{ queryList, setQueryList , isSearched  , setIsSearched}}>
+    <SearchContext.Provider value={{ queryList, setQueryList, isSearched, setIsSearched }}>
       {children}
     </SearchContext.Provider>
   );

@@ -1,20 +1,14 @@
 "use client";
-import { createContext, useContext, useState  } from "react"
+import { createContext, useContext, useState } from "react";
 
 const ToolBarContext = createContext();
 
-export function PostToolBarProvider({children}) {
+export function PostToolBarProvider({ children }) {
+  const [view, setView] = useState("list");
 
-    const [view , setView] = useState("list");
-
-     
-  return (
-    <ToolBarContext.Provider value={{ view , setView }}>
-        {children}
-    </ToolBarContext.Provider>
-  )
+  return <ToolBarContext.Provider value={{ view, setView }}>{children}</ToolBarContext.Provider>;
 }
 
-export default PostToolBarProvider
+export default PostToolBarProvider;
 
 export const useToolBar = () => useContext(ToolBarContext);
