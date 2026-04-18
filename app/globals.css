@@ -52,6 +52,17 @@ body {
   background: #4b5563; 
 }
 
+ 
+html, body {
+ 
+  cursor: url('/cursors/kitty_pointer.cur'), auto;
+}
+
+ 
+a, button, .cursor-pointer {
+  cursor: url('/cursors/kitty_select.gif'), pointer;
+}
+
 
 
 

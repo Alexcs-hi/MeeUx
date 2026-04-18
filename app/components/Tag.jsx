@@ -1,4 +1,5 @@
 "use client";
+import { icons } from "../constants/icons";
 
 export default function Tag({ name, onDelete, setExcluded, isExcluded }) {
   return (
@@ -12,9 +13,9 @@ export default function Tag({ name, onDelete, setExcluded, isExcluded }) {
 
       <button className='cursor-pointer hover:bg-gray-200/30 p-1 md:p-2 rounded ' onClick={setExcluded}>
         {isExcluded ? (
-          <img className=' md:w-4 md:h-4 w-3 h-3 invert' src='/add.png' alt='add_icon' />
+          <img className=' md:w-4 md:h-4 w-3 h-3 invert' src={icons.add} alt='add_icon' />
         ) : (
-          <img className=' md:w-4 md:h-4 w-3 h-3 invert' src='/line.png' alt='removed_icon' />
+          <img className=' md:w-4 md:h-4 w-3 h-3 invert' src={icons.remove} alt='removed_icon' />
         )}
       </button>
     </div>

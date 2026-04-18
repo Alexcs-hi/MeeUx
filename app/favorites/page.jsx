@@ -1,6 +1,7 @@
 "use client";
 import { useFavorite } from "../context/FavoriteContext";
 import Post from "../components/Post";
+import { icons } from "../constants/icons";
 
 function favorites() {
   const { favorites, removeAllFavorite, removeFavorite } = useFavorite();
@@ -10,7 +11,7 @@ function favorites() {
         <div className='flex flex-col items-center gap-2 '>
           <img
             className='w-20 h-20 bg-gray-600/20 rounded-xl p-4 invert border border-gray-600/20   '
-            src='/heart.png'
+            src={icons.heart}
             alt='heart'
           />
           <h1>No Favorites Yet ?</h1>
@@ -19,9 +20,9 @@ function favorites() {
       </div>
     );
   return (
-    <div className='flex flex-1 flex-col items-center gap-4 '>
+    <div className='flex flex-1 flex-col items-center gap-4 mt-4 '>
       <button
-        className='p-2  border border-gray-200/20 rounded hover:bg-gray-200/20 transition'
+        className='p-2  border border-gray-200/20 rounded-xl  hover:bg-gray-200/20 transition'
         onClick={() => removeAllFavorite()}>
         Remove All
       </button>

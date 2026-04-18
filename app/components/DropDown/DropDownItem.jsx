@@ -4,7 +4,7 @@ function DropDownItem({ name, toggleOpen, onClick }) {
       onClick={() => {
         (toggleOpen(), onClick());
       }}
-      className='cursor-pointer md:text-sm text-xs hover:bg-gray-200/20  rounded transition p-2 w-full h-full  '>
+      className='cursor-pointer md:text-sm text-xs hover:bg-gray-200/20  rounded-xl transition p-2 w-full h-full  '>
       {name}
     </div>
   );

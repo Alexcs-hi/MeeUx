@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Comfortaa } from "next/font/google";
+import { Geist, Geist_Mono, Comfortaa  , Sniglet ,  Itim} from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -26,6 +26,18 @@ const comfortaa = Comfortaa({
   subsets: ["latin"],
   weight: ["300", "400", "700"],
   variable: "--font-comfortaa",
+});
+
+export const sniglet = Sniglet({
+  subsets: ["latin"],
+  weight: ["400", "800"], 
+  variable: "--font-sniglet",
+});
+
+export const itim = Itim({
+  subsets: ["latin"],
+  weight: "400", 
+  variable: "--font-itim",
 });
 
 export const metadata: Metadata = {
@@ -58,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
 
-      <body className={`${comfortaa.className} ${geistSans.variable} ${geistMono.variable} antialiased  `}>
+      <body className={`  ${sniglet.className} ${comfortaa.className} ${geistSans.variable} ${geistMono.variable} antialiased  `}>
         <SideBarProvider>
           <SearchProvider>
             <SortProvider>

@@ -4,6 +4,7 @@ import { useSideBar } from "../context/SideBarToggle";
 import { useSearch } from "../context/SearchContext";
 import { useEffect } from "react";
 import { useToolBar } from "../context/PostToolBarContext";
+import { icons } from "../constants/icons";
 
 export default function SideBar() {
   const { visible, toggleSideBar } = useSideBar();
@@ -30,7 +31,7 @@ export default function SideBar() {
             <button
               onClick={() => toggleSideBar()}
               className='rounded p-2 cursor-pointer hover:bg-gray-200/20 transition '>
-              <img className='invert w-7   ' src='/cross.png' alt='cross' />
+              <img className='invert w-7   ' src={icons.cross} alt='cross' />
             </button>
           </div>
 
@@ -44,13 +45,13 @@ export default function SideBar() {
             <button
               onClick={() => setView("list")}
               className='flex-1 cursor-pointer flex flex-row gap-2 items-center  justify-center rounded-md transition active:scale-95  hover:bg-gray-200/20 p-1'>
-              <img className='w-5 h-5 invert-75' src='/list_view.png' alt='list_view' />
+              <img className='w-5 h-5 invert-75' src={icons.list} alt='list_view' />
               List
             </button>
             <button
               onClick={() => setView("grid")}
               className='flex-1 cursor-pointer flex flex-row gap-2 items-center justify-center  rounded-md transition active:scale-95  hover:bg-gray-200/20 p-1'>
-              <img className='w-5 h-5 invert-75' src='/grid_view.png' alt='grid_view' />
+              <img className='w-5 h-5 invert-75' src={icons.grid} alt='grid_view' />
               Grid
             </button>
           </div>

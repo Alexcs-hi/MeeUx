@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { saveFile } from "../utils/saveFile";
 import { useFavorite } from "../context/FavoriteContext";
+import { icons } from "../constants/icons";
+import ToolTip from "./ToolTip";
 
 export default function Post({ post }) {
   const { favorites, addFavorite, removeFavorite } = useFavorite();
@@ -10,6 +12,16 @@ export default function Post({ post }) {
   const [error, setError] = useState(false);
   const [isTags, setIsTags] = useState(false);
   const url_end = post.file_url.slice(-4);
+
+  function PostButton({ name, onClick, src }) {
+    return (
+      <ToolTip label={name}>
+        <button onClick={onClick} className='cursor-pointer p-2 rounded-xl hover:bg-gray-200/20 transition'>
+          <img className='w-6 md:w-7 lg:w-8   grayscale invert  brightness-1' src={src} alt={name} />
+        </button>
+      </ToolTip>
+    );
+  }
 
   return (
     <div className=' relative h-fit flex flex-col  gap-2 p-2 lg:p-4 border border-gray-400/30 rounded-md w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-black/20'>
@@ -50,7 +62,8 @@ export default function Post({ post }) {
 
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-2'>
-          <button
+          <PostButton
+            name='Share'
             onClick={() => {
               navigator.clipboard
                 .writeText(post.file_url)
@@ -59,45 +72,27 @@ export default function Post({ post }) {
                   window.alert("Something Went Wrong", err);
                 });
             }}
-            className='cursor-pointer p-2 rounded hover:bg-gray-200/20 transition'>
-            <img className='w-6 md:w-7 lg:w-8 grayscale invert brightness-1 ' src='/share.png' alt='share_icon' />
-          </button>
+            src={icons.share}
+          />
 
           {favorites.some((f) => f.id === post.id) ? (
-            <button
-              onClick={() => removeFavorite(post)}
-              className='cursor-pointer p-2   rounded hover:bg-gray-200/20 transition'>
-              <img className='w-6 md:w-7 lg:w-8 invert' src='/unfavorite.png' alt='unfavorite' />
-            </button>
+            <PostButton name='Unfavorite' onClick={() => removeFavorite(post)} src={icons.unfavorite} />
           ) : (
-            <button
-              onClick={() => {
-                addFavorite(post);
-              }}
-              className='cursor-pointer p-2 rounded hover:bg-gray-200/20 transition active:scale-95'>
-              <img className='w-6 md:w-7 lg:w-8 invert' src='/heart.png' alt='heart' />
-            </button>
+            <PostButton name='Favorite' onClick={() => addFavorite(post)} src={icons.heart} />
           )}
-
-          <button
-            onClick={() => {
-              saveFile(post.file_url);
-            }}
-            className='cursor-pointer p-2 rounded hover:bg-gray-200/20 transition'>
-            <img className='w-6 md:w-7 lg:w-8 invert' src='/download.png' alt='download' />
-          </button>
+          <PostButton name='Download' onClick={() => saveFile(post.file_url)} src={icons.download} />
         </div>
 
-        <button
+        <PostButton
+          name='Tags'
           onClick={() => {
             setIsTags((prev) => !prev);
           }}
-          className='cursor-pointer p-2 rounded hover:bg-gray-200/20 transition active:scale-95'>
-          <img className='w-5 md:w-6 lg:w-7 invert' src='/arrow_down.png' alt='arrow_down' />
-        </button>
+          src={icons.arrow_down}
+        />
       </div>
 
-      <div className=' flex   flex-wrap w-full max-h-60 overflow-auto  gap-2 '>
+      <div className=' flex mt-2  flex-wrap w-full max-h-60 overflow-auto  gap-2 '>
         {isTags && (
           <div className='flex w-5/6 border-b border-gray-200/20 gap-2'>
             <h1 className='border rounded-xl border-gray-200/20 p-2 text-gray-400 hover:bg-gray-200/20 cursor-pointer mb-2 '>
