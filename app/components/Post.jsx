@@ -17,7 +17,7 @@ export default function Post({ post }) {
     return (
       <ToolTip label={name}>
         <button onClick={onClick} className='cursor-pointer p-2 rounded-xl hover:bg-gray-200/20 transition'>
-          <img className='w-6 md:w-7 lg:w-8   grayscale invert  brightness-1' src={src} alt={name} />
+          <img className='w-6 md:w-7 lg:w-8  grayscale invert-75' src={src} alt={name} />
         </button>
       </ToolTip>
     );
@@ -49,7 +49,7 @@ export default function Post({ post }) {
               decoding='async'
               onError={() => setError(true)}
               onLoad={() => setLoaded(true)}
-              className={`   not-first-of-type:    transition-opacity duration-500 
+              className={`    not-first-of-type:    transition-opacity duration-500 
             ${loaded ? "opacity-100" : "opacity-0"}`}
               src={`https://image-proxy.alexcs-hello.workers.dev?url=${encodeURIComponent(post.file_url)}`}
               alt={post.id}
@@ -92,15 +92,15 @@ export default function Post({ post }) {
         />
       </div>
 
-      <div className=' flex mt-2  flex-wrap w-full max-h-60 overflow-auto  gap-2 '>
+      <div className=' flex flex-wrap w-full max-h-60 overflow-auto  gap-2 '>
         {isTags && (
           <div className='flex w-5/6 border-b border-gray-200/20 gap-2'>
-            <h1 className='border rounded-xl border-gray-200/20 p-2 text-gray-400 hover:bg-gray-200/20 cursor-pointer mb-2 '>
+            <h1 className='border rounded-xl text-sm md:text-base border-gray-200/20 p-2 text-gray-400 hover:bg-gray-200/20 cursor-pointer mb-2 '>
               Score : {post.score}
             </h1>
             {post.source && (
               <a href={post.source} target='_blank'>
-                <h1 className='border rounded-xl border-gray-200/20 p-2 text-gray-400 hover:bg-gray-200/20 cursor-pointer mb-2 underline '>
+                <h1 className='border text-sm md:text-base  rounded-xl border-gray-200/20 p-2 text-gray-400 hover:bg-gray-200/20 cursor-pointer mb-2 underline '>
                   Source
                 </h1>
               </a>
@@ -108,11 +108,11 @@ export default function Post({ post }) {
           </div>
         )}
 
-        <div className='flex flex-wrap w-full gap-2'>
+        <div className='flex flex-wrap w-full  gap-2'>
           {isTags &&
             tags.map((tag, index) => (
               <button
-                className=' cursor-pointer p-2 text-gray-400 border-gray-200/20 border rounded-xl hover:bg-gray-200/20'
+                className=' text-sm md:text-base cursor-pointer p-2 text-gray-400 border-gray-200/20 border rounded-xl hover:bg-gray-200/20'
                 key={`${tag}+${index}`}>
                 {tag}
               </button>

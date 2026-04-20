@@ -144,7 +144,7 @@ export default function ClientPosts() {
   return (
     <div className='mt-0 sm:mt-7  '>
       <div
-        className={`   ${view === "grid" ? "columns-1 sm:columns-2 md:columns-2 lg:columns-3  [&>div:not(:first-child)]:mt-5  " : " flex flex-col items-center gap-4 "}   overflow-hidden  `}>
+        className={`  ${view === "grid" ? "columns-1 sm:columns-2 md:columns-2 lg:columns-3  [&>div:not(:first-child)]:mt-5  " : " flex flex-col items-center gap-4 "}  overflow-hidden  `}>
         {Array.isArray(posts) && posts.length > 0 ? (
           posts.map((post, index) =>
             posts.length === index + 3 ? (
