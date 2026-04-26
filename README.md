@@ -1,7 +1,7 @@
 # 😼 MeeUx — Explore Rule34
 
-MeeUx is a **Rule34 browser and explorer** built to let you easily browse, search, and explore posts from Rule34 with a clean, modern UI.  
-Some features are still in progress — this is a **work-in-progress project**.
+MeeUx is a **rule34 browser , explorer and downloader** built to let you easily browse, search, and explore posts from Rule34 with a clean, modern UI.  
+Some features are still in progress
 
 ---
 
@@ -38,7 +38,7 @@ Some features are still in progress — this is a **work-in-progress project**.
 </div>
 
 
-##  How To Use
+##  How To setup **MeeUx** locally
 
 1. First make sure to have [Node.js](https://nodejs.org/en/download) (npm) and [Git](https://git-scm.com/install/windows) installed.  
 2. Create an account on [rule34.xxx](https://rule34.xxx/).  
@@ -55,8 +55,6 @@ Some features are still in progress — this is a **work-in-progress project**.
 ##  Work-In-Progress Features
 - **Additional themes**   
 - A Mobile app in the future - Working on it !
-- Persist search one reload - Done  
-- To be able to browse locally without any api key - Kinda Done ?
 ---
 
 
@@ -69,5 +67,5 @@ Some features are still in progress — this is a **work-in-progress project**.
  <pre>
   ∧,,,∧
 (  ̳• · • ̳)
-/    づ♡ love you 
+/    づ♡ \
 </pre>

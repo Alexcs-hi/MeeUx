@@ -63,7 +63,7 @@ export default function SideBar() {
               setIsSearched(true);
               window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
             }}
-            className='  text-gray-300 cursor-pointer border border-gray-600/50 rounded-xl p-2 w-full hover:bg-gray-200/20 active:scale-95    transition  '>
+            className='  text-gray-300 cursor-pointer border border-gray-600/50 rounded-xl p-2 w-full hover:bg-gray-200/20 active:scale-95  transition  '>
             Search
           </button>
         </div>

@@ -63,5 +63,6 @@ export default function useR34Posts(pageNumber, tags) {
     posts,
     loading,
     hasMore,
+    setIsLoading,
   };
 }

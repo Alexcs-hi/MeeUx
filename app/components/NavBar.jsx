@@ -9,6 +9,18 @@ import {icons} from "../constants/icons"
 import {routes} from "../constants/routes"
 
 
+  function NavButton({ name, onClick, image_src }) {
+    return (
+  <ToolTip label={name}>
+      <button
+        onClick = {onClick}
+        className=' flex-none  active:scale-95 cursor-pointer p-2  rounded-xl hover:bg-gray-200/20 transition'>
+       <img className='md:w-7 md:h-7  w-6 h-6  invert' src={image_src} alt='name' />
+      </button>
+    </ToolTip>
+    );
+  }
+
 
 export default function NavBar() {
   const router = useRouter();
@@ -35,18 +47,6 @@ export default function NavBar() {
 
   const { toggleSideBar } = useSideBar();
 
-  function NavButton({ name, onClick, image_src }) {
-    return (
-  <ToolTip label={name}>
-      <button
-        onClick = {onClick}
-        className=' flex-none  active:scale-95 cursor-pointer p-2  rounded-xl hover:bg-gray-200/20 transition'>
-       <img className='md:w-7 md:h-7  w-6 h-6  invert' src={image_src} alt='name' />
-      </button>
-    </ToolTip>
-    );
-  }
-
   if (isMounted && width <= 639) {
     return (
       <div
@@ -54,25 +54,25 @@ export default function NavBar() {
         <button
           onClick={() => router.push("/")}
           className='hover:bg-gray-200/20  rounded-xl p-2 cursor-pointer active:scale-95 focus:bg-gray-600/30 transition'>
-          <img className='h-7 w-7 invert' src={icons.home} alt='cat_paw' />
+          <img className='h-6 w-6 invert' src={icons.home} alt='cat_paw' />
         </button>
 
         <button
           onClick={toggleSideBar}
           className='hover:bg-gray-200/20 rounded-xl p-2 cursor-pointer active:scale-95 focus:bg-gray-600/30 transition'>
-          <img className='h-7 w-7 invert' src={icons.search} alt='search' />
+          <img className='h-6 w-6 invert' src={icons.search} alt='search' />
         </button>
 
         <button
           onClick={() => router.push("/favorites")}
           className='hover:bg-gray-200/20 rounded-xl p-2 cursor-pointer  active:scale-95 focus:bg-gray-600/30 transition'>
-          <img className='h-7 w-7 invert' src={icons.heart} alt='favorites' />
+          <img className='h-6 w-6 invert' src={icons.heart} alt='favorites' />
         </button>
 
         <button
           onClick={() => router.push("/about")}
           className='hover:bg-gray-200/20 rounded-md p-2 cursor-pointer active:scale-95 focus:bg-gray-600/30 transition'>
-          <img className='h-7 w-7 invert' src={icons.about} alt='about' />
+          <img className='h-6 w-6 invert' src={icons.about} alt='about' />
         </button>
       </div>
     );

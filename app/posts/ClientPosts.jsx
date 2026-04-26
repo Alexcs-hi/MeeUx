@@ -26,7 +26,7 @@ export default function ClientPosts() {
   const { queryList, setQueryList, isSearched, setIsSearched } = useSearch();
 
   const { rating, setRating, score, setScore, upload, setUpload } = useSort();
-  const { posts, loading, hasMore } = useR34Posts(pageNumber, tags);
+  const { posts, loading, hasMore  , setIsLoading} = useR34Posts(pageNumber, tags);
 
   const { view } = useToolBar();
   const observer = useRef(null);
@@ -90,7 +90,9 @@ export default function ClientPosts() {
 
   useEffect(() => {
     if (!isSearched) return;
-
+    
+    setIsLoading(true);
+    
     let base = "";
     setPageNumber(0);
     if (queryList.length > 0) {
@@ -137,7 +139,7 @@ export default function ClientPosts() {
         }
       });
       if (node) observer.current.observe(node);
-    },
+    },  
     [loading],
   );
 

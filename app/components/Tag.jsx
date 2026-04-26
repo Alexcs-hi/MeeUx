@@ -3,10 +3,12 @@ import { icons } from "../constants/icons";
 
 export default function Tag({ name, onDelete, setExcluded, isExcluded }) {
   return (
-    <div className=' cursor-pointer text-gray-400 flex items-center gap-2 border border-gray-400/30 rounded-xl p-2 h-11'>
+    //something something something 
+    //${isExcluded ? "bg-red-500/20" : "bg-green-400/20"}
+    <div className={`  cursor-pointer text-gray-400 flex items-center gap-2 border border-gray-400/30 rounded-xl p-2 h-11`}>
       <button onClick={onDelete}>
         <h1
-          className={`  text-xs md:text-sm cursor-pointer md:p-1 hover:bg-red-500/50  rounded ${isExcluded ? "line-through text-gray-400/70 " : ""}`}>
+          className={`  text-xs md:text-sm cursor-pointer md:p-1 hover:bg-red-500/50  rounded ${isExcluded ? "line-through text-gray-400/70  " : ""}`}>
           {name}
         </h1>
       </button>
