@@ -39,14 +39,14 @@ export default function SearchBar() {
   }
 
   return (
-    <div className='w-full flex flex-col gap-4   '>
-      <div className=' w-full '>
+    <div className='w-full flex flex-col gap-4'>
+      <div className='w-full'>
         <input
           onChange={(e) => {
             handleQuery(e);
             setOpen(true);
           }}
-          className='p-4 rounded-full border border-gray-600/50 w-full   outline-0  focus:border-gray-200/40   '
+          className=' px-4 py-3 md:py-4 rounded-full border border-gray-600/50 w-full  outline-0  focus:border-gray-200/40'
           type='text'
           placeholder='Search R34'
         />
@@ -56,11 +56,11 @@ export default function SearchBar() {
         <div
           ref={queriesRef}
           style={{ scrollbarWidth: "none" }}
-          className={` ${open ? "opacity-100  pointer-events-auto " : "opacity-0 pointer-events-none"}  flex flex-wrap max-h-40  overflow-auto z-50 absolute top-48 bg-black/30 backdrop-blur-sm  border border-gray-200/20 rounded-xl mr-5`}>
+          className={` ${open ? "opacity-100  pointer-events-auto " : "opacity-0 pointer-events-none"}  flex flex-wrap max-h-40  overflow-auto z-50 absolute top-45 md:top-48 bg-black/30 backdrop-blur-sm  border border-gray-200/20 rounded-xl mr-5`}>
           {queries.map((q, i) => (
             <div
               key={`${q.value}-${i}`}
-              className=' p-2 rounded text-gray-400 transition   hover:bg-gray-200/20 cursor-pointer truncate'
+              className=' p-2 rounded text-gray-400 transition hover:bg-gray-200/20 cursor-pointer truncate'
               onClick={() => {
                 setQueryList((prev) =>
                   prev.some((item) => item.name === q.value) ? prev : [...prev, { name: q.value, excluded: false }],

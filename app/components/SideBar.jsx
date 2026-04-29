@@ -31,11 +31,11 @@ export default function SideBar() {
             <button
               onClick={() => toggleSideBar()}
               className='rounded p-2 cursor-pointer hover:bg-gray-200/20 transition '>
-              <img className='invert w-7   ' src={icons.cross} alt='cross' />
+              <img className='invert w-5 md:w-6' src={icons.cross} alt='cross' />
             </button>
           </div>
 
-          <h1 className='font-bold text-3xl'>Search</h1>
+          <h1 className='font-bold  text-2xl md:text-3xl'>Search</h1>
 
           <SearchBar />
         </div>

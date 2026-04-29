@@ -14,8 +14,10 @@ function TagSelectButton({ onClick, className, name }) {
 }
 
 export default function TagSelect({ label, closeTagSelect, isVisible }) {
+  const baseURL = window.location.origin;
+
   const { queryList, setQueryList, setIsSearched ,  isSearched} = useSearch();
- 
+  
   const isTagInQueryList = queryList.find((tagObj) => tagObj.name === label.trim());
 
   function addOrExcludeTag(excluded) {
@@ -78,6 +80,16 @@ export default function TagSelect({ label, closeTagSelect, isVisible }) {
             className='hover:bg-red-500/20 '
           />
         )}
+
+
+         <TagSelectButton
+            name='Open In New Tab'
+            onClick={() => {  
+              closeTagSelect();
+              window.open(`${baseURL}/posts?tags=+${label}` , '_blank' ).focus();
+            }}
+            className='hover:bg-blue-500/20 '
+          />
 
         {isTagInQueryList && (
           <TagSelectButton
