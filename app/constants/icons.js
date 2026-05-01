@@ -1,19 +1,19 @@
 export const icons = {
-    home : "/cat_paw.png",
-    search : "/search.png",
-    heart : "/heart.png",
-    settings : "/cog.png",
-    share : "/share.png",
-    add : "/add.png",
-    arrow_down : "/arrow_down.png", //displays the list of tags from a post
-    remove : "/line.png",
-    download : "/download.png",
-    cross : "/cross.png",
-    about : "/about.png",
-    grid : "/grid_view.png",
-    list : "/list_view.png",
-    unfavorite : "/unfavorite.png",
-    github : "/github.png",
+    home : "/icons/cat_paw.svg",
+    search : "/icons/search.svg",
+    heart : "/icons/heart.svg",
+    settings : "/icons/cog.svg",
+    share : "/icons/share.svg",
+    add : "/icons/add.svg",
+    arrow_down : "/icons/arrow_down.svg", //displays the list of tags from a post
+    remove : "/icons/line.svg",
+    download : "/old_icons/download.png",
+    cross : "/icons/cross.svg",
+    about : "/icons/about.svg",
+    grid : "/icons/grid_view.svg",
+    list : "/icons/list_view.svg",
+    unfavorite : "/icons/unfavorite.svg",
+    github : "/icons/github.svg",
 }
 
 
