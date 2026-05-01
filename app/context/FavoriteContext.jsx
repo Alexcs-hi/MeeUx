@@ -5,10 +5,13 @@ const FavoriteContext = createContext(null);
 
 export function FavoriteProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
+  const [loading , setLoading] = useState([]);
 
   useEffect(() => {
+    setLoading(true);
     const stored = localStorage.getItem("favorites");
     if (stored) setFavorites(JSON.parse(stored));
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -32,7 +35,7 @@ export function FavoriteProvider({ children }) {
   };
 
   return (
-    <FavoriteContext.Provider value={{ favorites, addFavorite, removeFavorite, removeAllFavorite }}>
+    <FavoriteContext.Provider value={{ favorites, addFavorite, removeFavorite, removeAllFavorite , loading }}>
       {children}
     </FavoriteContext.Provider>
   );

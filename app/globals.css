@@ -20,21 +20,13 @@
 }
 
 body {
-   background:
-    radial-gradient(
-      circle at 50% 10%,
-      #910a543f 0%,
-      rgba(0, 0, 0, 0.9) 60%
-    ),
-    #0a0608;
+  background: radial-gradient(circle at 50% 10%, #910a543f 0%, rgba(0, 0, 0, 0.9) 60%), #0a0608;
   height: 100dvh;
-  background-color: black ;
+  background-color: black;
   background-repeat: no-repeat;
- 
+
   font-family: Arial, Helvetica, sans-serif;
-    color: var(--foreground);
- 
- 
+  color: var(--foreground);
 }
 
 ::-webkit-scrollbar {
@@ -42,28 +34,65 @@ body {
   width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #111827; 
+  background: #111827;
 }
 ::-webkit-scrollbar-thumb {
-  background: #374151; 
+  background: #374151;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4b5563; 
+  background: #4b5563;
 }
 
- 
-html, body {
- 
-  cursor: url('/cursors/kitty_pointer.cur'), auto;
+html,
+body {
+  cursor: url("/cursors/kitty_pointer.cur"), auto;
 }
 
- 
-a, button, .cursor-pointer {
-  cursor: url('/cursors/kitty_select.gif'), pointer;
+a,
+button,
+.cursor-pointer {
+  cursor: url("/cursors/kitty_select.gif"), pointer;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 0.4s ease-in both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.4s ease-in both fade-in;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
 }
 
 
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);  
+  }
+}
 
- 
+
+.fade-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}

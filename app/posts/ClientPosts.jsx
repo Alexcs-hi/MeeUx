@@ -26,7 +26,7 @@ export default function ClientPosts() {
   const { queryList, setQueryList, isSearched, setIsSearched } = useSearch();
 
   const { rating, setRating, score, setScore, upload, setUpload } = useSort();
-  const { posts, loading, hasMore  , setIsLoading} = useR34Posts(pageNumber, tags);
+  const { posts, loading, hasMore, setIsLoading } = useR34Posts(pageNumber, tags);
 
   const { view } = useToolBar();
   const observer = useRef(null);
@@ -90,9 +90,9 @@ export default function ClientPosts() {
 
   useEffect(() => {
     if (!isSearched) return;
-    
+
     setIsLoading(true);
-    
+
     let base = "";
     setPageNumber(0);
     if (queryList.length > 0) {
@@ -139,24 +139,29 @@ export default function ClientPosts() {
         }
       });
       if (node) observer.current.observe(node);
-    },  
+    },
     [loading],
   );
 
   return (
-    <div className='mt-0 sm:mt-7  '>
+    <div className='mt-0 sm:mt-7'>
       <div
         className={`  ${view === "grid" ? "columns-1 sm:columns-2 md:columns-2 lg:columns-3  [&>div:not(:first-child)]:mt-5  " : " flex flex-col items-center gap-4 "}  overflow-hidden  `}>
         {Array.isArray(posts) && posts.length > 0 ? (
-          posts.map((post, index) =>
-            posts.length === index + 3 ? (
-              <div key={`${post.file_url}+${index}`} ref={lastPostElement}>
-                <Post key={post.id} post={post} />
-              </div>
-            ) : (
-              <Post key={`${post.file_url}+${index}`} post={post} />
-            ),
-          )
+          posts.map((post, index) => {
+
+            // if the posts is 3rd to the last post attach the infinite scroll ref
+            if (posts.length === index + 3) {
+              return (
+                <div key={`${post.file_url}+${index}`} ref={lastPostElement}>
+                  <Post key={post.id} post={post} />
+                </div>
+              );
+            }
+
+            //else render posts normally 
+            return <Post key={`${post.file_url}+${index}`} post={post} />;
+          })
         ) : (
           <div>{!loading && hasMore && "You might have entered wrong api key , pls try again :3"}</div>
         )}
