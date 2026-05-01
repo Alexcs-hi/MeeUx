@@ -5,7 +5,7 @@ const FavoriteContext = createContext(null);
 
 export function FavoriteProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
-  const [loading , setLoading] = useState([]);
+  const [loading ,setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);

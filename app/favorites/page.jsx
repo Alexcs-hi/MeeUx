@@ -4,15 +4,14 @@ import Post from "../components/Post";
 import { icons } from "../constants/icons";
 
 function favorites() {
-  const { favorites, removeAllFavorite, removeFavorite , loading } = useFavorite();
+  const { favorites, removeAllFavorite, removeFavorite  , loading} = useFavorite();
 
-  if(loading){
+  if (loading){
     return (
       <div>
       </div>
     )
   }
-
 
   if (favorites.length <= 0)
     return (

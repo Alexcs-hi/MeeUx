@@ -11,7 +11,6 @@ import { SortProvider } from "./context/SortContext";
 import { FavoriteProvider } from "./context/FavoriteContext";
 import { PostToolBarProvider } from "./context/PostToolBarContext";
 import Script from "next/script";
-import { ViewTransition } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,7 +71,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <body className={`  ${sniglet.className} ${comfortaa.className} ${geistSans.variable} ${geistMono.variable} antialiased  `}>
-        <ViewTransition>
         <SideBarProvider>
           <SearchProvider>
             <SortProvider>
@@ -90,7 +88,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </SortProvider>
           </SearchProvider>
         </SideBarProvider>
-        </ViewTransition>
       </body>
     </html>
   );

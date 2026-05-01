@@ -55,32 +55,6 @@ button,
   cursor: url("/cursors/kitty_select.gif"), pointer;
 }
 
-@view-transition {
-  navigation: auto;
-}
-
-::view-transition-old(root) {
-  animation: 0.4s ease-in both fade-out;
-}
-
-::view-transition-new(root) {
-  animation: 0.4s ease-in both fade-in;
-}
-
-@keyframes fade-out {
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-}
-
-
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -88,10 +62,9 @@ button,
   }
   to {
     opacity: 1;
-    transform: translateY(0);  
+    transform: translateY(0);
   }
 }
-
 
 .fade-up {
   animation: fadeInUp 0.5s ease-out forwards;
