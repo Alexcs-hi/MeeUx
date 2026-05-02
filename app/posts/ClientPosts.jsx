@@ -121,7 +121,9 @@ export default function ClientPosts() {
 
     const url = `/posts${params.toString() ? `?${params.toString()}` : ""}`;
 
-    router.push(url);
+    setTimeout(() => {
+       router.push(url);
+    }, 450);
     setIsSearched(false);
   }, [isSearched]);
 

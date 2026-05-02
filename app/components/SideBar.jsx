@@ -24,6 +24,7 @@ export default function SideBar() {
     <>
       {visible && <div className='fixed inset-0 bg-black/50 to-[#470a3d4d] backdrop-blur-sm z-10' />}
       <div
+        style={{ viewTransitionName: 'none' }}
         className={` bg-linear-to-b  from-[#000000] via-[#000000] to-[#85295b7a]   transition duration-400 z-40 flex flex-col items-center justify-between border-l border-gray-600 rounded  p-4 fixed  right-0  w-full md:w-99  lg:w-99 h-dvh overflow-auto  
         ${visible ? "translate-x-0" : "translate-x-full"}`}>
         <div className='flex flex-col gap-4 items-center w-full'>
