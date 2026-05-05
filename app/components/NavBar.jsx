@@ -44,7 +44,7 @@ export default function NavBar() {
       <div
         className={`${
           direction === "down" ? "translate-y-full" : "translate-y-0"
-        } transition z-1 bg-black/50 backdrop-blur-2xl fixed bottom-0 left-0 w-full flex justify-evenly items-center h-16 sm:hidden`}>
+        } transition z-1 bg-black/50 backdrop-blur-2xl fixed bottom-0 left-0 w-full flex justify-evenly items-center h-14 sm:hidden`}>
         <button
           onClick={() => router.push("/")}
           className='hover:bg-gray-200/20 rounded-xl p-2 cursor-pointer active:scale-95 focus:bg-gray-600/30 transition'>

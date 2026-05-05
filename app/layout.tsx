@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Comfortaa  , Sniglet ,  Itim} from "next/font/google";
+import { Geist, Geist_Mono, Comfortaa, Sniglet, Itim } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -10,6 +10,7 @@ import { SearchProvider } from "./context/SearchContext";
 import { SortProvider } from "./context/SortContext";
 import { FavoriteProvider } from "./context/FavoriteContext";
 import { PostToolBarProvider } from "./context/PostToolBarContext";
+import { TagActionsProvider } from "./context/TagActionsContext";
 import Script from "next/script";
 import { ViewTransition } from "react";
 
@@ -31,22 +32,22 @@ const comfortaa = Comfortaa({
 
 export const sniglet = Sniglet({
   subsets: ["latin"],
-  weight: ["400", "800"], 
+  weight: ["400", "800"],
   variable: "--font-sniglet",
 });
 
 export const itim = Itim({
   subsets: ["latin"],
-  weight: "400", 
+  weight: "400",
   variable: "--font-itim",
 });
 
 export const metadata: Metadata = {
-  title: "MeeUx – Rule34 Browser",
+  title: "MeeUx – Explore Rule34",
   description:
     "MeeUx is a Rule34 browser and explorer built to let you easily browse, search, and explore posts from Rule34 with a clean, modern UI",
   alternates: {
-    canonical: "https://meeux.vercel.app/posts/all",
+    canonical: "https://meeux.vercel.app/posts/",
   },
   robots: {
     index: true,
@@ -71,25 +72,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
 
-      <body className={`  ${sniglet.className} ${comfortaa.className} ${geistSans.variable} ${geistMono.variable} antialiased  `}>
+      <body
+        className={` ${sniglet.className} ${comfortaa.className} ${geistSans.variable} ${geistMono.variable} antialiased  `}>
         <ViewTransition>
-        <SideBarProvider>
-          <SearchProvider>
-            <SortProvider>
-              <FavoriteProvider>
-                <PostToolBarProvider>
-                  <SideBar />
-                  <NavBar />
-                  <main className='sm:pt-19'>
-                    {children}
-                    <SpeedInsights />
-                    <Analytics />
-                  </main>
-                </PostToolBarProvider>
-              </FavoriteProvider>
-            </SortProvider>
-          </SearchProvider>
-        </SideBarProvider>
+          <SideBarProvider>
+            <TagActionsProvider>
+              <SortProvider>
+                <SearchProvider>
+                  <FavoriteProvider>
+                    <PostToolBarProvider>
+                      <SideBar />
+                      <NavBar />
+                      <main className='sm:pt-19'>
+                        {children}
+                        <SpeedInsights />
+                        <Analytics />
+                      </main>
+                    </PostToolBarProvider>
+                  </FavoriteProvider>
+                </SearchProvider>
+              </SortProvider>
+            </TagActionsProvider>
+          </SideBarProvider>
         </ViewTransition>
       </body>
     </html>

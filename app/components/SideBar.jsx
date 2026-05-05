@@ -8,7 +8,7 @@ import { icons } from "../constants/icons";
 
 export default function SideBar() {
   const { visible, toggleSideBar } = useSideBar();
-  const { isSearched, setIsSearched } = useSearch();
+  const { executeSearch } = useSearch();
   const { setView } = useToolBar();
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function SideBar() {
           <button
             onClick={() => {
               toggleSideBar();
-              setIsSearched(true);
+              executeSearch();
               window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
             }}
             className='  text-gray-300 cursor-pointer border border-gray-600/50 rounded-xl p-2 w-full hover:bg-gray-200/20 active:scale-95  transition  '>

@@ -36,6 +36,12 @@ export default function useR34Posts(pageNumber, tags) {
 
   useEffect(() => {
     setIsLoading(true);
+
+    
+    if (pageNumber === 0) {
+      setPosts([]); 
+    }
+
     const fetchData = async () => {
       try {
         const res = await fetchPosts(pageNumber, tags, limit);
@@ -53,7 +59,7 @@ export default function useR34Posts(pageNumber, tags) {
         setPosts([]);
         setHasMore(false);
       } finally {
-        setIsLoading(false);
+        setIsLoading(false);       
       }
     };
     fetchData();

@@ -11,6 +11,10 @@ import { scoreOptions } from "../utils/options";
 import { ratingOptions } from "../utils/options";
 import { uploadOptions } from "../utils/options";
 import { useRouter } from "next/navigation";
+import FullScreenPost from "../components/FullScreenPost";
+import TagList from "../components/TagList";
+import TagSelect from "../components/TagSelect";
+import { useTagActions } from "../context/TagActionsContext";
 
 export default function ClientPosts() {
   const router = useRouter();
@@ -19,19 +23,35 @@ export default function ClientPosts() {
   const scoreParams = searchParams.get("score");
   const ratingParams = searchParams.get("rating");
   const uploadParams = searchParams.get("upload");
+  
+  const [postLoading , setPostLoading] = useState(false);
 
-  const [pageNumber, setPageNumber] = useState(0);
+  
   const [tags, setTags] = useState("");
+ 
 
-  const { queryList, setQueryList, isSearched, setIsSearched } = useSearch();
+  // sets the current post index for fullScreen Mode
+  const [currentPost, setCurrentPost] = useState(0);
+
+  // sets the current post object for the clicked Post
+  const [currentTagPost, setCurrentTagPost] = useState();
+
+  //set the visibility of TagList
+  const { tagListVisible, setTagListVisible, tagSelectVisible, setTagSelectVisible, selectedPost, setSelectedPost , isFullScreen , setIsFullScreen } =
+    useTagActions();
+
+  const { queryList, setQueryList, executeSearch , pageNumber , setPageNumber } = useSearch();
 
   const { rating, setRating, score, setScore, upload, setUpload } = useSort();
-  const { posts, loading, hasMore  , setIsLoading} = useR34Posts(pageNumber, tags);
+  const { posts, loading, hasMore, setIsLoading } = useR34Posts(pageNumber, tags);
 
   const { view } = useToolBar();
   const observer = useRef(null);
 
   useEffect(() => {
+    setPostLoading(true);
+    setIsFullScreen(false);
+    setPageNumber(0);
     setScore("");
     setRating("");
     setUpload("");
@@ -86,46 +106,9 @@ export default function ClientPosts() {
     if (new_upload) finalTags += `+${encodeURIComponent(new_upload)}`;
 
     setTags(finalTags);
+    setPostLoading(false);
   }, [searchParams]);
 
-  useEffect(() => {
-    if (!isSearched) return;
-    
-    setIsLoading(true);
-    
-    let base = "";
-    setPageNumber(0);
-    if (queryList.length > 0) {
-      base = queryList.map((tag) => (tag.excluded ? `-${tag.name}` : tag.name)).join("+");
-    }
-
-    const payload = {
-      tags: base || null,
-      rating: rating || null,
-      score: score || null,
-      upload: upload || null,
-    };
-
-    fetch("/api/logSearch", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    }).catch(() => {});
-
-    const params = new URLSearchParams();
-
-    if (base) params.set("tags", base);
-    if (rating) params.set("rating", rating);
-    if (score) params.set("score", score);
-    if (upload) params.set("upload", upload);
-
-    const url = `/posts${params.toString() ? `?${params.toString()}` : ""}`;
-
-    setTimeout(() => {
-       router.push(url);
-    }, 450);
-    setIsSearched(false);
-  }, [isSearched]);
 
   const lastPostElement = useCallback(
     (node) => {
@@ -141,29 +124,77 @@ export default function ClientPosts() {
         }
       });
       if (node) observer.current.observe(node);
-    },  
-    [loading],
+    },
+    [loading, hasMore],
   );
 
   return (
     <div className='mt-0 sm:mt-7  '>
+      {isFullScreen && (
+        <FullScreenPost
+          onClickTag={() => {
+            setTagListVisible(true);
+          }}
+          posts={posts}
+          SetIsFullScreen={setIsFullScreen}
+          currentPost={currentPost}
+          setCurrentPost={setCurrentPost}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+        />
+      )}
+
       <div
-        className={`  ${view === "grid" ? "columns-1 sm:columns-2 md:columns-2 lg:columns-3  [&>div:not(:first-child)]:mt-5  " : " flex flex-col items-center gap-4 "}  overflow-hidden  `}>
+        onClick={() => setTagListVisible(false)}
+        className={`  ${
+          tagListVisible
+            ? "opacity-100 backdrop-blur-md pointer-events-auto"
+            : "opacity-0 backdrop-blur-0 pointer-events-none"
+        }
+          fixed inset-0 sm:p-20 z-40 flex items-end justify-center transition-all duration-300  `}>
+        <TagList queryList={queryList} post={selectedPost} />
+      </div>
+
+      <div
+        onClick={() => setTagSelectVisible(false)}
+        className={`  ${
+          tagSelectVisible
+            ? "opacity-100 backdrop-blur-md pointer-events-auto"
+            : "opacity-0 backdrop-blur-0 pointer-events-none"
+        }
+          fixed inset-0 z-50 flex items-center justify-center transition-all duration-300  `}>
+        <TagSelect />
+      </div>
+
+      <div
+        className={`  ${view === "grid" ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" : " flex flex-col items-center gap-4  overflow-hidden  "}  `}>
         {Array.isArray(posts) && posts.length > 0 ? (
           posts.map((post, index) =>
             posts.length === index + 3 ? (
               <div key={`${post.file_url}+${index}`} ref={lastPostElement}>
-                <Post key={post.id} post={post} />
+                <Post
+                  key={post.id}
+                  post={post}
+                  SetIsFullScreen={setIsFullScreen}
+                  currentPost={index}
+                  setCurrentPost={setCurrentPost}
+                />
               </div>
             ) : (
-              <Post key={`${post.file_url}+${index}`} post={post} />
+              <Post
+                key={`${post.file_url}+${index}`}
+                post={post}
+                SetIsFullScreen={setIsFullScreen}
+                currentPost={index}
+                setCurrentPost={setCurrentPost}
+              />
             ),
           )
         ) : (
           <div>{!loading && hasMore && "You might have entered wrong api key , pls try again :3"}</div>
         )}
 
-        <div>{loading && hasMore && "Loading ...."}</div>
+        <div>{(loading || postLoading) && "Loading ...."}</div>
         <div>{!loading && !hasMore && posts.length <= 0 && "No posts found"}</div>
         <div className='p-2'>{!hasMore && !loading && "No More Posts found"}</div>
       </div>
