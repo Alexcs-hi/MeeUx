@@ -9,7 +9,7 @@ async function fetchPosts(pageNumber, tags, limit) {
   // const credentials = process.env.R34_CREDENTIALS;
   // const url = `https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&json=1&pid=${pageNumber}&limit=${limit}&tags=${tags}&${credentials}`;
 
-  const url = `https://fetch-posts.alexcs-hello.workers.dev/?query=${encodeURIComponent(tags)}&page=${pageNumber}&limit=${limit} `;
+  const url = `https://fetch-posts.alexcs-hello.workers.dev/?query=${(tags)}&page=${pageNumber}&limit=${limit} `;
   try {
     const res = await fetch(url);
     let data;
