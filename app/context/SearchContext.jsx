@@ -23,20 +23,7 @@ export function SearchProvider({ children }) {
     if (queryList.length > 0) {
       base = queryList.map((tag) => (tag.excluded ? `-${tag.name}` : tag.name)).join("+");
     }
-
-    const payload = {
-      tags: base || null,
-      rating: rating || null,
-      score: score || null,
-      upload: upload || null,
-    };
-
-    fetch("/api/logSearch", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    }).catch(() => {});
-
+ 
     const params = new URLSearchParams();
 
     if (base) params.set("tags", base);
