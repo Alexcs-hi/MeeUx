@@ -9,7 +9,7 @@ import { useSwipeable } from "react-swipeable";
 import { useTagActions } from "../context/TagActionsContext";
 import {useWindowSize} from "../hooks/useWindowSize"
 
-function FullScreenPost({ posts, SetIsFullScreen, currentPost, setCurrentPost, setPageNumber, pageNumber }) {
+function FullScreenPost({ posts, SetIsFullScreen, currentPost, setCurrentPost, setPageNumber, pageNumber , favorite}) {
   const windowSize = useWindowSize();
   const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -68,7 +68,8 @@ const handlers = useSwipeable({
 
   function displayNext() {
     if (currentPost >= posts.length - 1) { 
-      setPageNumber(pageNumber + 1);
+      if (favorite) return
+      else setPageNumber(pageNumber + 1);
     } else {
       setCurrentPost(currentPost + 1);
     }
