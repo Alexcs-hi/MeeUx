@@ -78,7 +78,7 @@ export default function NavBar() {
       <div
         className={`${
           direction === "down" ? "-translate-y-full" : "translate-y-0"
-        } transition ease-out backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.5)] border-gray-400/30 z-1 fixed w-full top-0 hidden sm:flex justify-between items-center p-2 lg:pl-20 lg:pr-20 border-b`}>
+        } transition ease-out backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.5)] border-gray-400/30 z-20 fixed w-full top-0 hidden sm:flex justify-between items-center p-2 lg:pl-20 lg:pr-20 border-b`}>
         <div className='flex-1 flex justify-start'>
           <NavButton
             onClick={() => window.open("https://github.com/Alexcs-hi")}

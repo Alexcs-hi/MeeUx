@@ -8,9 +8,12 @@ import TagSelect from "../components/TagSelect";
 import { useSearch } from "../context/SearchContext";
 import { useState } from "react";
 import FullScreenPost from "../components/FullScreenPost";
+import { useToolBar } from "../context/PostToolBarContext";
+import Masonry from "react-masonry-css";
 function favorites() {
   const { favorites, removeAllFavorite, removeFavorite, loading } = useFavorite();
   const { queryList, pageNumber, setPageNumber } = useSearch();
+  const {view } = useToolBar();
   const {
     selectedPost,
     tagListVisible,
@@ -20,6 +23,14 @@ function favorites() {
     isFullScreen,
     setIsFullScreen,
   } = useTagActions();
+  
+    const breakpointColumnsObj = {
+  default: 4,
+  1100: 3,
+  700: 2,
+  500: 1
+};
+
   const [currentPost, setCurrentPost] = useState(0);
   if (loading) {
     return <div></div>;
@@ -82,13 +93,33 @@ function favorites() {
         Remove All
       </button>
 
-      <div className='flex flex-1 flex-col items-center gap-4'>
+{view === "list" ?  (
+    <div className='flex flex-1 flex-col items-center gap-4'>
         {favorites.map((post, index) => (
           <div key={post.id}>
             <Post SetIsFullScreen={setIsFullScreen} setCurrentPost={setCurrentPost} currentPost={index} post={post} />
           </div>
         ))}
       </div>
+
+): (
+  <Masonry
+        className="flex "
+        columnClassName="pl-2"
+        breakpointCols={breakpointColumnsObj}
+    >   { favorites.map((post, index) => (
+          <div key={post.id}>
+            <Post SetIsFullScreen={setIsFullScreen} setCurrentPost={setCurrentPost} currentPost={index} post={post} />
+          </div>
+        ))}
+      </Masonry>
+) }
+    
+   <div>
+        
+
+      
+    </div>
     </div>
   );
 }

@@ -15,6 +15,7 @@ import FullScreenPost from "../components/FullScreenPost";
 import TagList from "../components/TagList";
 import TagSelect from "../components/TagSelect";
 import { useTagActions } from "../context/TagActionsContext";
+import Masonry from "react-masonry-css";
 
 export default function ClientPosts() {
   const router = useRouter();
@@ -23,6 +24,14 @@ export default function ClientPosts() {
   const scoreParams = searchParams.get("score");
   const ratingParams = searchParams.get("rating");
   const uploadParams = searchParams.get("upload");
+
+  const breakpointColumnsObj = {
+  default: 4,
+  1100: 3,
+  700: 2,
+  500: 1
+};
+
   
   const [postLoading , setPostLoading] = useState(false);
 
@@ -128,6 +137,8 @@ export default function ClientPosts() {
     [loading, hasMore],
   );
 
+  
+
   return (
     <div className='mt-0 sm:mt-7  '>
       {isFullScreen && (
@@ -166,8 +177,11 @@ export default function ClientPosts() {
         <TagSelect />
       </div>
 
-      <div
-        className={`  ${view === "grid" ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" : " flex flex-col items-center gap-4  overflow-hidden  "}  `}>
+   {/* className={`  ${view === "grid" ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" : " flex flex-col items-center gap-4  overflow-hidden  "}  ` */}
+     
+     {view === "list" ? (
+   <div
+      className={`flex flex-col items-center gap-4  overflow-hidden    `  }>
         {Array.isArray(posts) && posts.length > 0 ? (
           posts.map((post, index) =>
             posts.length === index + 3 ? (
@@ -197,7 +211,54 @@ export default function ClientPosts() {
         <div>{(loading || postLoading) && "Loading ...."}</div>
         <div>{!loading && !hasMore && posts.length <= 0 && "No posts found"}</div>
         <div className='p-2'>{!hasMore && !loading && "No More Posts found"}</div>
-      </div>
+
+      </div  >
+     ): 
+     (
+    
+    <div>
+        <Masonry
+        className="flex "
+        columnClassName="pl-2"
+        breakpointCols={breakpointColumnsObj}
+    >   {Array.isArray(posts) && posts.length > 0 ? (
+          posts.map((post, index) =>
+            posts.length === index + 3 ? (
+              <div key={`${post.file_url}+${index}`} ref={lastPostElement}>
+                <Post
+                  key={post.id}
+                  post={post}
+                  SetIsFullScreen={setIsFullScreen}
+                  currentPost={index}
+                  setCurrentPost={setCurrentPost}
+                  isFullScreen={isFullScreen}
+                />
+              </div>
+            ) : (
+              <Post
+                key={`${post.file_url}+${index}`}
+                post={post}
+                SetIsFullScreen={setIsFullScreen}
+                currentPost={index}
+                setCurrentPost={setCurrentPost}
+                isFullScreen={isFullScreen}
+              />
+            ),
+          )
+        ) : (
+          <div>{!loading && hasMore && "You might have entered wrong api key , pls try again :3"}</div>
+        )}
+      </Masonry>
+
+
+        <div className="absolute left-1/2 -translate-x-7">{(loading || postLoading) && "Loading ...."}</div>
+        <div>{!loading && !hasMore && posts.length <= 0 && "No posts found"}</div>
+        <div className='p-2'>{!hasMore && !loading && "No More Posts found"}</div>
+
+    </div>
+     )
+     }
+     
     </div>
   );
 }
